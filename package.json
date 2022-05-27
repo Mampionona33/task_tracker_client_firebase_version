@@ -8,6 +8,7 @@
   },
   "repository": {
     "type": "git",
+    "dev": "",
     "url": "git+https://github.com/Mampionona33/task_tracker_client_firebase_version.git"
   },
   "keywords": [
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/Mampionona33/task_tracker_client_firebase_version#readme",
   "dependencies": {
+    "express": "^4.18.1",
     "firebase": "^9.8.1",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
