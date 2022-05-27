@@ -2,11 +2,11 @@
   "name": "task_tracker_client_firebase_version",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/server.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack": "webpack -w",
-    "dev": "nodemon cross-env -w server.js -w .env -w *.js -w *.jsx"
+    "watch:build": "webpack",
+    "dev": "nodemon cross-env -w ./server.js -w .env -e js,jsx,json set NODE_ENV=development "
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "css-loader": "^6.7.1",
     "dotenv-webpack": "^7.1.0",
     "nodemon": "^2.0.16",
+    "npm-run-all": "^4.1.5",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
     "webpack-dev-middleware": "^5.3.3",

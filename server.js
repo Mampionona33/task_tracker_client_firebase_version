@@ -2,9 +2,10 @@ const express = require('express');
 require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 8000;
-const enableHMR = (process.env.ENABLE_HMR || true) === true;
+const enableHMR = (process.env.ENABLE_HMR || 'true') === 'true';
 
 if (enableHMR && process.env.NODE_ENV !== 'production') {
+  console.log('Adding HMR ');
   const webpack = require('webpack');
   const devMiddlware = require('webpack-dev-middleware');
   const hotMiddlware = require('webpack-hot-middleware');
