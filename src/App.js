@@ -1,14 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 // first entry point of the application
-class App extends Component {
-  render() {
-    return (
-      <div className='app'>
-        <h1>Place holder App</h1>
+const App = () => {
+  return (
+    <React.Fragment>
+      <div className='root'>
+        <h1>Place holder for App</h1>
       </div>
-    );
-  }
-}
+    </React.Fragment>
+  );
+};
 
-export default App;
+ReactDOM.render(<App />, document.getElementById('root'));
