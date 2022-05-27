@@ -2,13 +2,14 @@
   "name": "task_tracker_client_firebase_version",
   "version": "1.0.0",
   "description": "",
-  "main": "App.js",
+  "main": "./src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack -w",
+    "dev": "nodemon cross-env -w server.js -w .env -w *.js -w *.jsx"
   },
   "repository": {
     "type": "git",
-    "dev": "",
     "url": "git+https://github.com/Mampionona33/task_tracker_client_firebase_version.git"
   },
   "keywords": [
@@ -34,9 +35,14 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^8.2.5",
     "babel-preset-react": "^6.24.1",
+    "core-js": "^3.22.7",
     "css-loader": "^6.7.1",
+    "dotenv-webpack": "^7.1.0",
+    "nodemon": "^2.0.16",
     "webpack": "^5.72.1",
     "webpack-cli": "^4.9.2",
-    "webpack-dev-server": "^4.9.0"
+    "webpack-dev-middleware": "^5.3.3",
+    "webpack-dev-server": "^4.9.0",
+    "webpack-hot-middleware": "^2.25.1"
   }
 }

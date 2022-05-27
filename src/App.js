@@ -1,15 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
+import { StrictMode } from 'react';
 
 // first entry point of the application
 const App = () => {
   return (
     <React.Fragment>
       <div className='root'>
-        <h1>Place holder for App</h1>
+        <h1>Place holder for App test</h1>
       </div>
     </React.Fragment>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const container = document.getElementById('app');
+const root = createRoot(container);
+root.render(
+  <StrictMode>
+    <App />
+  </StrictMode>
+);
