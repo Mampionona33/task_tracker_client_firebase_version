@@ -1,10 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 
 // first entry point of the application
-
-export default function App(params) {
-  return <h1>Place holder for App</h1>;
+class App extends Component {
+  render() {
+    return (
+      <div className='app'>
+        <h1>Place holder App</h1>
+      </div>
+    );
+  }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+export default App;
