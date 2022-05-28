@@ -1,9 +1,11 @@
-import { Router } from 'express';
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import Page from './Page/Page';
+import { StrictMode } from 'react';
 
 // first entry point of the application
 export default function App() {
-  return <Page />;
+  return (
+    <StrictMode>
+      <div>place holder App</div>
+    </StrictMode>
+  );
 }
