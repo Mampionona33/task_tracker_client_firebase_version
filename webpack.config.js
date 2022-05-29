@@ -3,20 +3,14 @@ const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: 'development',
-  entry: { app: ['./src/index.js'] },
+  entry: { app: ['./src/App.jsx'] },
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public'),
   },
-  watch: true,
   resolve: {
-    extensions: ['.js', '.jsx'],
-  },
-  devServer: {
-    static: {
-      directory: path.resolve(__dirname, 'public'),
-    },
-    hot: true,
+    extensions: ['', '.js', '.jsx'],
+    fallback: { path: require.resolve('path-browserify') },
   },
   plugins: [new Dotenv()],
   module: {

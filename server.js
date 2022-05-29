@@ -3,6 +3,7 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 8000;
 const enableHMR = (process.env.ENABLE_HMR || 'true') === 'true';
+const path = require('path');
 
 if (enableHMR && process.env.NODE_ENV !== 'production') {
   console.log('Adding HMR ');

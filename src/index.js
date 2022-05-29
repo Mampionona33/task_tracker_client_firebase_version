@@ -1,20 +1,14 @@
 import { createRoot } from 'react-dom/client';
 import React from 'react';
 import App from './App';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Dashboard from './Page/Dashboard';
-import History from './Page/History';
+import { BrowserRouter, Router } from 'react-router-dom';
 
 const container = document.getElementById('app');
 const root = createRoot(container);
 root.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<Dashboard />} />
-      <Route path='dashboard' element={<Dashboard />} />
-      <Route path='history' element={<History/>} />
-    </Routes>
-  </BrowserRouter>
+  <Router>
+    <App />
+  </Router>
 );
 // used to make component hot reload
 if (module.hot) {
