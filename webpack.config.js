@@ -7,11 +7,16 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public'),
-    publicPath: '/',
   },
   watch: true,
   resolve: {
     extensions: ['.js', '.jsx'],
+  },
+  devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'public'),
+    },
+    hot: true,
   },
   plugins: [new Dotenv()],
   module: {
