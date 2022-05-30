@@ -12,6 +12,18 @@ module.exports = {
     extensions: ['', '.js', '.jsx'],
     fallback: { path: require.resolve('path-browserify') },
   },
+  watch: true,
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'public'),
+    },
+    historyApiFallback: true,
+    open: true,
+    server: 'http',
+    compress: true,
+    port: 8000,
+    hot: true,
+  },
   plugins: [new Dotenv()],
   module: {
     rules: [
