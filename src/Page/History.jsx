@@ -4,7 +4,7 @@ import { StrictMode } from 'react';
 export default function History() {
   return (
     <StrictMode>
-      <p>place holder For History</p>
+      <p>placeholder For History</p>
     </StrictMode>
   );
 }

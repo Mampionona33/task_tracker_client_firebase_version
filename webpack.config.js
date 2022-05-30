@@ -7,16 +7,16 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'public'),
+    publicPath: '/',
   },
   resolve: {
     extensions: ['', '.js', '.jsx'],
-    fallback: { path: require.resolve('path-browserify') },
   },
 
   devServer: {
+    historyApiFallback: true,
     static: {
       directory: path.join(__dirname, 'public'),
-      serveIndex: true,
     },
     compress: true,
     open: true,
