@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "watch:build": "webpack",
-    "serve": "webpack",
-    "dev": "nodemon cross-env -w ./server.js -w .env -e js,jsx,json set NODE_ENV=development "
+    "dev": "webpack serve",
+    "node_": "nodemon cross-env -w ./server.js -w .env -e js,jsx,json set NODE_ENV=development "
   },
   "repository": {
     "type": "git",

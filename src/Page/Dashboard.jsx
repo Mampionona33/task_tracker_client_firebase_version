@@ -3,7 +3,7 @@ import React from 'react';
 export default function Dashboard() {
   return (
     <React.Fragment>
-      <p>Place holder Dashboard</p>
+      <p>Place holder Dashboard test</p>
     </React.Fragment>
   );
 }
