@@ -1,25 +1,16 @@
-import React from 'react';
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Dashboard from './Page/Dashboard';
-import History from './Page/History';
 import Login from './Page/Login';
-import { auth } from './Firebase';
+import History from './Page/History';
 
 export default function App() {
-  const [user, setUser] = useState(null);
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      setUser(user);
-    }, []);
-  });
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={!user ? <Login /> : <Dashboard />} />
-        <Route path='history' element={<History />} />
+        <Route path='/' element={<Login />} />
         <Route path='dashboard' element={<Dashboard />} />
+        <Route path='history' element={<History />} />
       </Routes>
     </BrowserRouter>
   );
