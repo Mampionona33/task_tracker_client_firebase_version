@@ -1,10 +1,12 @@
+import { signOut } from 'firebase/auth';
 import React from 'react';
+import { auth, googleLogOut } from '../firebase';
 
 export default function Dashboard() {
   return (
     <React.Fragment>
       <p>Placeholder Dashboard push</p>
-      <button onClick={handleSignOut}>sing out</button>
+      <button onClick={googleLogOut}>sing out</button>
     </React.Fragment>
   );
 }
