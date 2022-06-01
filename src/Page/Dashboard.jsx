@@ -1,6 +1,6 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
-import { auth, googleLogOut } from '../firebase';
+import { auth, googleLogOut } from '../Firebase/firebase';
 
 export default function Dashboard() {
   return (

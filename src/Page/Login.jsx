@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   BrowserRouter,
   Navigate,
@@ -7,7 +7,9 @@ import {
   Routes,
   useNavigate,
 } from 'react-router-dom';
-import { auth, singInWithGoogle } from '../firebase';
+import { AuthContext } from '../Firebase/context';
+import { auth, singInWithGoogle } from '../Firebase/firebase';
+import Dashboard from './Dashboard';
 
 const LogginPage = () => {
   return (
@@ -20,22 +22,10 @@ const LogginPage = () => {
 };
 
 export default function Login() {
-  const [userLogged, setUserLogged] = useState(null);
-
-  onAuthStateChanged(auth, (user) => {
-    if (user !== null) {
-      setUserLogged(user);
-    }
-  });
-  useEffect(() => {}, [userLogged]);
-
+  const { user } = useContext(AuthContext);
   return (
     <React.Fragment>
-      {userLogged !== null ? (
-        <Navigate to={'dashboard'} replace={true} />
-      ) : (
-        <LogginPage />
-      )}
+      {user ? <Navigate to={'dashboard'} /> : <LogginPage />}
     </React.Fragment>
   );
 }

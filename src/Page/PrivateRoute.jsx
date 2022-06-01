@@ -1,23 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { auth, user } from '../firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import { AuthContext } from '../Firebase/context';
 
 const PrivateRoute = () => {
-  const [user_, setUser_] = useState(null);
+  const user = useContext(AuthContext);
 
-  useEffect(() => {
-    auth.onAuthStateChanged((user) => {
-      console.log(user);
-      if (user !== null) {
-        setUser_(user.displayName);
-      } else {
-        setUser_(null);
-      }
-    });
-  }, []);
-
-  return user_ !== null ? <Outlet /> : <Navigate to={'login'} replace={true} />;
+  return !user ? <Navigate to={'login'} replace={true} /> : <Outlet />;
 };
 
 export { PrivateRoute };
