@@ -4,8 +4,8 @@ import { AuthContext } from '../Firebase/context';
 
 const PrivateRoute = () => {
   const user = useContext(AuthContext);
-
-  return !user ? <Navigate to={'login'} replace={true} /> : <Outlet />;
+  // error in navigate must be fixed
+  return user === null ? <Navigate to={'login'} replace={true} /> : <Outlet />;
 };
 
 export { PrivateRoute };
