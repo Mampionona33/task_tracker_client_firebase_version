@@ -10,7 +10,7 @@ const GoogleSinginPage = () => {
     ev.preventDefault();
     try {
       await singInWithGoogle();
-      navigate((window.location = '/'));
+      navigate((window.location = 'dashboard'));
     } catch (error) {
       console.log(error);
     }
