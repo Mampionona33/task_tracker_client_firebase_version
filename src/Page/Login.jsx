@@ -10,7 +10,7 @@ const GoogleSinginPage = () => {
     ev.preventDefault();
     try {
       await singInWithGoogle();
-      navigate((window.location = 'dashboard'));
+      navigate('dashboard');
     } catch (error) {
       console.log(error);
     }
@@ -27,7 +27,7 @@ const GoogleSinginPage = () => {
 export default function Login() {
   const { user } = useContext(AuthContext);
   if (user) {
-    return <Navigate to={(window.location = 'dashboard')} />;
+    return <Navigate to={'/'} />;
   } else {
     return <GoogleSinginPage />;
   }

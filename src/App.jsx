@@ -12,11 +12,24 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='login' element={<Login />} />
-        <Route path='dashboard' element={<PrivateRoute >
-        <Dashboard />  </PrivateRoute>} />
-        <Route path='history' element={<History />} />
+        <Route exact path='/' element={<Login />} />
+        <Route exact path='login' element={<Login />} />
+        <Route
+          path='dashboard'
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='history'
+          element={
+            <PrivateRoute>
+              <History />
+            </PrivateRoute>
+          }
+        />
         <Route path='*' element={'404 Not found'} />
       </Routes>
     </BrowserRouter>
