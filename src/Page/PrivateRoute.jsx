@@ -1,11 +1,11 @@
-import React, { useContext } from 'react';
-import { Navigate, Outlet } from 'react-router-dom';
+import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
+import { Navigate, Outlet, Route, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Firebase/context';
 
-const PrivateRoute = () => {
-  const user = useContext(AuthContext);
-  // error in navigate must be fixed
-  return user === null ? <Navigate to={'login'} replace={true} /> : <Outlet />;
+const PrivateRoute = ({ children }) => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
+  return user ? children : <Navigate to={(window.location = 'login')} />;
 };
 
 export { PrivateRoute };

@@ -1,26 +1,47 @@
-import React from 'react';
+import React, { useLayoutEffect } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Dashboard from './Page/Dashboard';
 import Login from './Page/Login';
 import History from './Page/History';
 import { PrivateRoute } from './Page/PrivateRoute';
 import { useContext } from 'react';
-import { AuthContext } from './Firebase/context';
+import { AuthContext, AuthProvider } from './Firebase/context';
+import { LogginRedirect } from './Page/LogginRedirect';
 
 export default function App() {
   const { user } = useContext(AuthContext);
-
-  console.log(user);
+  
 
   return (
     <BrowserRouter>
       <Routes>
         <Route path='login' element={<Login />} />
-        <Route path='/' element={<PrivateRoute />}>
-          <Route path='/' element={<Dashboard />} />
-          <Route path='history' element={<History />} />
-          <Route path='*' element={<Navigate to={<Dashboard />} />} />
-        </Route>
+        <Route
+          path='dashboard'
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='history'
+          element={
+            <PrivateRoute>
+              <History />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/'
+          element={
+            <PrivateRoute>
+              <Dashboard />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path='*' element={'404 Not found'} />
       </Routes>
     </BrowserRouter>
   );

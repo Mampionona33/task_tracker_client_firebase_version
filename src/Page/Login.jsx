@@ -1,15 +1,8 @@
-import { onAuthStateChanged } from 'firebase/auth';
+import { setCurrentScreen } from 'firebase/analytics';
 import React, { useContext, useEffect, useState } from 'react';
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-  useNavigate,
-} from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 import { AuthContext } from '../Firebase/context';
-import { auth, singInWithGoogle } from '../Firebase/firebase';
-import Dashboard from './Dashboard';
+import { singInWithGoogle } from '../Firebase/firebase';
 
 const LogginPage = () => {
   return (
@@ -23,9 +16,6 @@ const LogginPage = () => {
 
 export default function Login() {
   const { user } = useContext(AuthContext);
-  return (
-    <React.Fragment>
-      {user ? <Navigate to={'dashboard'} /> : <LogginPage />}
-    </React.Fragment>
-  );
+  console.log(user);
+  return <LogginPage />;
 }
