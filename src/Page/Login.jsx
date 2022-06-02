@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Firebase/context';
 import { singInWithGoogle } from '../Firebase/firebase';
+import { ConditionalHomePage } from './ConditionalHomePage';
 
 const GoogleSinginPage = () => {
   const navigate = useNavigate();
@@ -26,9 +27,6 @@ const GoogleSinginPage = () => {
 
 export default function Login() {
   const { user } = useContext(AuthContext);
-  if (user) {
-    return <Navigate to={'/'} />;
-  } else {
-    return <GoogleSinginPage />;
-  }
+  console.log(user);
+  return user ? <ConditionalHomePage /> : <GoogleSinginPage />;
 }
