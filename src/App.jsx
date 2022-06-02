@@ -7,12 +7,13 @@ import { PrivateRoute } from './Page/PrivateRoute';
 import { useContext } from 'react';
 import { AuthContext, AuthProvider } from './Firebase/context';
 import { LogginRedirect } from './Page/LogginRedirect';
+import { ConditionalHomePage } from './Page/ConditionalHomePage';
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path='/' element={<Login />} />
+        <Route exact path='/' element={<ConditionalHomePage />} />
         <Route exact path='login' element={<Login />} />
         <Route
           path='dashboard'

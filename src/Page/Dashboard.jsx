@@ -1,7 +1,7 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { auth } from '../Firebase/firebase';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -18,6 +18,9 @@ export default function Dashboard() {
   return (
     <React.Fragment>
       <p>Placeholder Dashboard push</p>
+      <Link to={'/history'} replace>
+        to hitory
+      </Link>
       <button onClick={(e) => handleLogOut(e)}>sing out</button>
     </React.Fragment>
   );

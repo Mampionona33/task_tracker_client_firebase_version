@@ -1,28 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Firebase/context';
+import Dashboard from './Dashboard';
+import Login from './Login';
 
 const ConditionalHomePage = () => {
-  const [toDashboard, setToDashboard] = useState(false);
-  const [toOthers, setToOthers] = useState(false);
-  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
 
-  const unsubscrib = window.location;
-  useEffect(() => {
-    if (unsubscrib.pathname === '/' || unsubscrib.pathname === '/login') {
-      console.log(location);
-      setToDashboard(true);
-    }
-    if (unsubscrib.pathname !== '/' || unsubscrib.pathname !== '/login') {
-      setToOthers(true);
-    }
-  }, []);
-
-  if (toDashboard) {
-    return <Navigate to={'dashboard'} />;
-  }
-  if (toOthers) {
-    return <Navigate to={window.location} />;
+  if (user) {
+    return <Dashboard />;
+  } else {
+    return <Login />;
   }
 };
 
