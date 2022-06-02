@@ -4,7 +4,7 @@ import { AuthContext } from '../Firebase/context';
 
 const LogginRedirect = ({ children }) => {
   const { user } = useContext(AuthContext);
-  return !user ? children : <Navigate to={(window.location = 'dashboard')} />;
+  return user ? <Navigate to={(window.location = 'dashboard')} /> : children;
 };
 
 export { LogginRedirect };

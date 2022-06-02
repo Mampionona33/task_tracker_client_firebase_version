@@ -9,38 +9,13 @@ import { AuthContext, AuthProvider } from './Firebase/context';
 import { LogginRedirect } from './Page/LogginRedirect';
 
 export default function App() {
-  const { user } = useContext(AuthContext);
-  
-
   return (
     <BrowserRouter>
       <Routes>
         <Route path='login' element={<Login />} />
-        <Route
-          path='dashboard'
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='history'
-          element={
-            <PrivateRoute>
-              <History />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='/'
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-
+        <Route path='/' element={<Dashboard />} />
+        <Route path='dashboard' element={<Dashboard />} />
+        <Route path='history' element={<History />} />
         <Route path='*' element={'404 Not found'} />
       </Routes>
     </BrowserRouter>

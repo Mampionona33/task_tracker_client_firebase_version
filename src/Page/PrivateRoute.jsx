@@ -4,7 +4,6 @@ import { AuthContext } from '../Firebase/context';
 
 const PrivateRoute = ({ children }) => {
   const { user } = useContext(AuthContext);
-  console.log(user);
   return user ? children : <Navigate to={(window.location = 'login')} />;
 };
 
