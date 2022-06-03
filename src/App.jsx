@@ -15,22 +15,6 @@ export default function App() {
       <Routes>
         <Route exact path='/' element={<ConditionalHomePage />} />
         <Route exact path='login' element={<Login />} />
-        <Route
-          path='dashboard'
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
-        <Route
-          path='history'
-          element={
-            <PrivateRoute>
-              <History />
-            </PrivateRoute>
-          }
-        />
         <Route path='*' element={'404 Not found'} />
       </Routes>
     </BrowserRouter>
