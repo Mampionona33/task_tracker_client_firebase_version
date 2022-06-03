@@ -2,7 +2,7 @@ import React from 'react';
 export default function Login() {
   return (
     <>
-      <button>Sing In</button>
+      <button>SingIn with Google</button>
     </>
   );
 }
