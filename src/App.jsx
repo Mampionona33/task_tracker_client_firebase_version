@@ -4,20 +4,35 @@ import Dashboard from './Page/Dashboard';
 import Login from './Page/Login';
 import History from './Page/History';
 import { UserContext } from './Firebase/context';
+import ProtectedRoute from './Page/ProtectedRoute';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function App() {
   const { user } = useContext(UserContext);
-  if (user) {
-    console.log(user);
-  }
+  const [isUser, setIsUser] = useState(null);
+  const isUserLogged = localStorage.getItem('isLoggeIn');
+
+  useEffect(() => {
+    if (isUserLogged) {
+      setIsUser(true);
+    }
+  }, []);
+
+  console.log(isUser);
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='login' element={<Login />} />
-          <Route path='dashboard' element={<Dashboard />} />
-          <Route path='history' element={<History />} />
+          <Route index element={!isUser ? <Login /> : <Dashboard />} />
+          <Route path='login' element={!isUser ? <Login /> : <Dashboard />} />
+          <Route
+            element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
+          >
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/history' element={<History />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

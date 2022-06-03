@@ -9,17 +9,19 @@ export const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (result) => {
       if (result) {
         setUser(result);
+        localStorage.setItem('isLoggeIn', 'true');
       }
     });
     return () => {
       unsubscribe;
     };
   }, []);
-
+  console.log(user);
   return (
     <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
   );
