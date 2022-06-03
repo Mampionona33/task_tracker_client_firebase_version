@@ -1,4 +1,5 @@
 import { setCurrentScreen } from 'firebase/analytics';
+import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useEffect, useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Firebase/context';
@@ -12,7 +13,7 @@ const GoogleSinginPage = () => {
     ev.preventDefault();
     try {
       await singInWithGoogle();
-      navigate('dashboard');
+      navigate('dashboard', { replace: true });
     } catch (error) {
       console.log(error);
     }
@@ -28,10 +29,5 @@ const GoogleSinginPage = () => {
 
 export default function Login() {
   const { user } = useContext(AuthContext);
-  console.log(user);
-  return user ? (
-    <Navigate to={(window.location = 'dashboard')} replace={true} />
-  ) : (
-    <GoogleSinginPage />
-  );
+  return <GoogleSinginPage />;
 }

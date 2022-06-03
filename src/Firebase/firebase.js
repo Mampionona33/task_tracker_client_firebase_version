@@ -24,9 +24,9 @@ const app = initializeApp(firebaseConfig);
 
 // get authentificated user information
 const auth = getAuth();
-const googleAuthProvider = new GoogleAuthProvider(app);
+const googleAuthProvider = new GoogleAuthProvider();
+googleAuthProvider.setCustomParameters({ prompt: 'select_account' });
 const singInWithGoogle = () => {
-  const googleAuthProvider = new GoogleAuthProvider();
   return signInWithPopup(auth, googleAuthProvider);
 };
 
