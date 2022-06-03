@@ -6,7 +6,6 @@ import History from './Page/History';
 import { PrivateRoute } from './Page/PrivateRoute';
 import { useContext } from 'react';
 import { AuthContext } from './Firebase/context';
-import { ConditionalHomePage } from './Page/ConditionalHomePage';
 
 export default function App() {
   const { user } = useContext(AuthContext);
