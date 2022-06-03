@@ -26,3 +26,5 @@ googleProvider.setCustomParameters({
   // this allow to select account on popup is open
   prompt: 'select_account',
 });
+
+exports = { auth, googleProvider };
