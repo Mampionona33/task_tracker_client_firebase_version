@@ -5,6 +5,12 @@ import { useState } from 'react';
 import { createContext } from 'react';
 import { auth } from './firebase';
 
+/* 
+  this file containts all of context "state"
+  for the whole childe components of index.js
+  Enclosed the App.js with AuthContextProvider in index.js
+ */
+
 export const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
@@ -21,7 +27,7 @@ export const AuthContextProvider = ({ children }) => {
       unsubscribe;
     };
   }, []);
-  console.log(user);
+
   return (
     <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
   );
