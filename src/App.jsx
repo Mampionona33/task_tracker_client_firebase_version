@@ -5,28 +5,20 @@ import Login from './Page/Login';
 import History from './Page/History';
 import { UserContext } from './Firebase/context';
 import ProtectedRoute from './Page/ProtectedRoute';
-import { useEffect } from 'react';
-import { useState } from 'react';
 
 export default function App() {
   const { user } = useContext(UserContext);
-  const [isUser, setIsUser] = useState(null);
-  const isUserLogged = localStorage.getItem('isLoggeIn');
-
-  useEffect(() => {
-    if (isUserLogged) {
-      setIsUser(true);
-    }
-  }, []);
-
-  console.log(isUser);
+  const isUserLogged = localStorage.getItem('taskTrackerUserisLoggeIn');
 
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route index element={!isUser ? <Login /> : <Dashboard />} />
-          <Route path='login' element={!isUser ? <Login /> : <Dashboard />} />
+          <Route index element={!isUserLogged ? <Login /> : <Dashboard />} />
+          <Route
+            path='login'
+            element={!isUserLogged ? <Login /> : <Dashboard />}
+          />
           <Route
             element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
           >

@@ -14,7 +14,7 @@ export const AuthContextProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (result) => {
       if (result) {
         setUser(result);
-        localStorage.setItem('isLoggeIn', 'true');
+        localStorage.setItem('taskTrackerUserisLoggeIn', 'true');
       }
     });
     return () => {
