@@ -2,7 +2,7 @@ import { createRoot } from 'react-dom/client';
 import React from 'react';
 import App from './App';
 import { AuthContextProvider } from './Firebase/context';
-import './index.css';
+import './styles/index.scss';
 
 const container = document.getElementById('app');
 const root = createRoot(container);

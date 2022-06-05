@@ -3,7 +3,7 @@ import React from 'react';
 import { auth, googleProvider } from '../Firebase/firebase';
 import { useNavigate } from 'react-router-dom';
 import GoogleButton from 'react-google-button';
-import './Login.css';
+import '../styles/Login.scss';
 
 export default function Login() {
   const navigate = useNavigate();
@@ -20,12 +20,16 @@ export default function Login() {
   };
 
   return (
-    <div className='paper'>
-      <div className='paper--title1'>Welcome to mampi tasck tracker</div>
-      <GoogleButton
-        className='googleButton'
-        onClick={(e) => handleClickSignIn(e)}
-      />
+    <div className='login'>
+      <div className='login__container'>
+        <div className='login__container__title'>
+          Welcome to mampi tasck tracker
+        </div>
+        <GoogleButton
+          className='login__container__button'
+          onClick={(e) => handleClickSignIn(e)}
+        />
+      </div>
     </div>
   );
 }
