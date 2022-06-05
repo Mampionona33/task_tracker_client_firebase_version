@@ -1,11 +1,12 @@
 import React from 'react';
-import SinOutButton from '../Components/SinOutButton';
+import Navbar from '../Components/Navbar';
+import SingOutButton from '../Components/SingOutButton';
 
 export default function Dashboard() {
   return (
     <>
-      <h1>Dashboard</h1>
-      <SinOutButton />
+      <Navbar />
+      <SingOutButton />
     </>
   );
 }

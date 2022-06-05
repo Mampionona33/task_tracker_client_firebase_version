@@ -2,7 +2,7 @@ import { signOut } from 'firebase/auth';
 import React from 'react';
 import { auth } from '../Firebase/firebase';
 
-export default function SinOutButton() {
+export default function SingOutButton() {
   const handleClickSingout = (event) => {
     event.preventDefault();
     signOut(auth)
