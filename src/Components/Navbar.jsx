@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.scss';
+import SingOutButton from '../Components/SingOutButton';
 
 const SideBare = ({ isOpen }) => {
-  const sidebarClasse = isOpen ? 'navbar__sidebar --is-open' : 'navbar__sidebar';
-
+  const sidebarClasse = isOpen ? 'sidebar--is-open' : 'sidebar--is-close';
+  console.log(isOpen);
   return (
     <div className={sidebarClasse}>
       <Link to={'history'}>History</Link>
@@ -20,11 +21,14 @@ export default function Navbar() {
     setSideBarOpen(!sideBarOpen);
   };
   return (
-    <div className='navbar'>
-      <button className='navbar__menu' onClick={(e) => handleClickMenu(e)}>
-        Menu
-      </button>
+    <>
+      <div className='navbar'>
+        <button className='navbar__menu' onClick={(e) => handleClickMenu(e)}>
+          Menu
+        </button>
+        <SingOutButton />
+      </div>
       <SideBare isOpen={sideBarOpen} />
-    </div>
+    </>
   );
 }
