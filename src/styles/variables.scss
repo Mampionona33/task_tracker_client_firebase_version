@@ -10,8 +10,9 @@ $thirdLightColor: #8a0ee2;
 $dangerColor: #f30a06;
 $warrningColor: #ea710b;
 $successColor: #5af52d;
+$whiteColor: #fff;
+$greyColor: #4b4b4b;
 
-// fonte size
-$title: 1.5rem;
-$title2: 1rem;
-$body1: 1rem;
+// box shadow
+/* offset-x | offset-y | blur-radius | spread-radius | color */
+$boxShadowGrey: 0px 0px 5px 3px rgba(0, 0, 0, 0.2);
