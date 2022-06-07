@@ -18,7 +18,18 @@ export default function SingOutButton() {
   };
 
   return (
-    <button type='button' onClick={handleClickSingout}>
+    <button
+      type='button'
+      onClick={handleClickSingout}
+      style={{
+        position: 'absolute',
+        top: '50px',
+        right: '0',
+        borderRadius: ' 0 0 5px 5px',
+        border: 'none',
+        padding: '0 1rem 0.5em 1rem',
+      }}
+    >
       Signout
     </button>
   );

@@ -23,6 +23,7 @@ const SideBare = ({ isOpen }) => {
 
 export default function Navbar() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
+  const [showSignOutButton, setShowSignOutButton] = useState(false);
   const { user } = useContext(UserContext);
 
   console.log(user);
@@ -31,6 +32,12 @@ export default function Navbar() {
     event.preventDefault();
     setSideBarOpen(!sideBarOpen);
   };
+
+  const handleClickAvatar = (event) => {
+    event.preventDefault();
+    setShowSignOutButton(!showSignOutButton);
+  };
+
   return (
     <>
       <div className='navbar'>
@@ -50,7 +57,11 @@ export default function Navbar() {
           )}
         </button>
         {user ? (
-          <button type='button' className='navbar__userAvatar__button'>
+          <button
+            onClick={(e) => handleClickAvatar(e)}
+            type='button'
+            className='navbar__userAvatar__button'
+          >
             <span
               className='navbar__userAvatar__button__img'
               style={{ backgroundImage: `url(${user.photoURL})` }}
@@ -61,10 +72,9 @@ export default function Navbar() {
         ) : (
           ''
         )}
-
-        {/* <SingOutButton /> */}
       </div>
       {sideBarOpen ? <SideBare isOpen={sideBarOpen} /> : ''}
+      {showSignOutButton ? <SingOutButton /> : ''}
     </>
   );
 }
