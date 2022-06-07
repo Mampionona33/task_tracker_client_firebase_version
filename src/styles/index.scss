@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
+@import './variables.scss';
+
 body {
   margin: 0;
   padding: 0;
@@ -5,4 +8,11 @@ body {
   background-image: url('../assets/background_curve.svg');
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+// select all class that include 'button'
+[class*='button'] {
+  border: none;
+  color: $whiteColor;
+  background-color: rgba(255, 255, 255, 0);
 }

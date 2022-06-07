@@ -7,8 +7,15 @@ const SideBare = ({ isOpen }) => {
   const sidebarClasse = isOpen ? 'sidebar--is-open' : 'sidebar--is-close';
   console.log(isOpen);
   return (
-    <div className={sidebarClasse}>
-      <Link to={'history'}>History</Link>
+    <div className={'sidebar ' + sidebarClasse}>
+      <div className='sidebar__container'>
+        <Link className='sidebar__container__elements' to={'/history'}>
+          History
+        </Link>
+        <Link className='sidebar__container__elements' to={'/dashboard'}>
+          Dashboard
+        </Link>
+      </div>
     </div>
   );
 };
@@ -23,8 +30,12 @@ export default function Navbar() {
   return (
     <>
       <div className='navbar'>
-        <button className='navbar__menu' onClick={(e) => handleClickMenu(e)}>
-          Menu
+        <button
+          type='button'
+          className='navbar__button'
+          onClick={(e) => handleClickMenu(e)}
+        >
+          <span className='material-icons-round'>menu</span>
         </button>
         <SingOutButton />
       </div>

@@ -1,25 +1,41 @@
+@import './variables.scss';
+
 .navbar {
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   height: 40px;
-  background-color: red;
+  background-color: $primaryDarckColor;
   display: flex;
   justify-content: space-between;
 }
 .sidebar {
+  width: 100%;
+  position: absolute;
+  height: calc(100% - 40px);
+  top: 40px;
+  transition: left 0.3s ease-in-out;
+  background-color: $transparendBackground;
+  z-index: 1;
+
+  &__container {
+    display: inline-flex;
+    height: 100%;
+    flex-direction: column;
+    width: auto;
+    background-color: $whiteColor;
+    &__elements {
+      margin: 0.3rem 1rem;
+    }
+  }
+
   &--is-open {
-    position: absolute;
-    width: 15vw;
-    top: 40px;
-    height: calc(100% - 40px);
-    background-color: green;
-    transition: left 0.3s ease-in-out;
     left: 0;
   }
   &--is-close {
-    right: -15vw;
+    left: -100%;
   }
 }
+
 // 0339195327
