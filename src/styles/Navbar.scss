@@ -9,6 +9,12 @@
   background-color: $primaryDarckColor;
   display: flex;
   justify-content: space-between;
+  &__button__menu--toggle {
+    &:active {
+      animation-name: menuRotation;
+      animation-duration: 0.1s;
+    }
+  }
 }
 .sidebar {
   width: 100%;
@@ -38,4 +44,12 @@
   }
 }
 
-// 0339195327
+// animation
+@keyframes menuRotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

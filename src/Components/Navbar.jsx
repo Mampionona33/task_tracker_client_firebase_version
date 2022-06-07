@@ -32,10 +32,18 @@ export default function Navbar() {
       <div className='navbar'>
         <button
           type='button'
-          className='navbar__button'
+          className='navbar__button--menu'
           onClick={(e) => handleClickMenu(e)}
         >
-          <span className='material-icons-round'>menu</span>
+          {!sideBarOpen ? (
+            <span className='material-icons-round navbar__button__menu--toggle'>
+              menu
+            </span>
+          ) : (
+            <span class='material-icons-round navbar__button__menu--toggle'>
+              close
+            </span>
+          )}
         </button>
         <SingOutButton />
       </div>
