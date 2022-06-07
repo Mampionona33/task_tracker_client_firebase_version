@@ -50,13 +50,14 @@ export default function Navbar() {
           )}
         </button>
         {user ? (
-          <div className='navbar__userAvatar'>
-            <button
-              type='button'
-              className='navbar__userAvatar__button'
+          <button type='button' className='navbar__userAvatar__button'>
+            <span
+              className='navbar__userAvatar__button__img'
               style={{ backgroundImage: `url(${user.photoURL})` }}
-            />
-          </div>
+            >
+              {user.displayName}
+            </span>
+          </button>
         ) : (
           ''
         )}
