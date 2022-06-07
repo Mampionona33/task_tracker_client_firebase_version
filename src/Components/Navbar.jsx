@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Navbar.scss';
 import SingOutButton from '../Components/SingOutButton';
+import { UserContext } from './../Firebase/context';
 
 const SideBare = ({ isOpen }) => {
   const sidebarClasse = isOpen ? 'sidebar--is-open' : 'sidebar--is-close';
-  console.log(isOpen);
+
   return (
     <div className={'sidebar ' + sidebarClasse}>
       <div className='sidebar__container'>
@@ -22,6 +23,9 @@ const SideBare = ({ isOpen }) => {
 
 export default function Navbar() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
+  const { user } = useContext(UserContext);
+
+  console.log(user);
 
   const handleClickMenu = (event) => {
     event.preventDefault();
@@ -45,7 +49,19 @@ export default function Navbar() {
             </span>
           )}
         </button>
-        <SingOutButton />
+        {user ? (
+          <div className='navbar__userAvatar'>
+            <button
+              type='button'
+              className='navbar__userAvatar__button'
+              style={{ backgroundImage: `url(${user.photoURL})` }}
+            />
+          </div>
+        ) : (
+          ''
+        )}
+
+        {/* <SingOutButton /> */}
       </div>
       <SideBare isOpen={sideBarOpen} />
     </>

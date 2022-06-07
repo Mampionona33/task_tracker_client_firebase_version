@@ -28,6 +28,10 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 
+  if (user) {
+    console.log(user.photoURL);
+  }
+
   return (
     <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
   );

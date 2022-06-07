@@ -15,6 +15,19 @@
       animation-duration: 0.1s;
     }
   }
+  &__userAvatar {
+    position: relative;
+    top: 0.1em;
+    right: 0.1em;
+    &__button {
+      border: 0.1em solid !important;
+      height: calc(40px - 0.3em);
+      width: calc(40px - 0.3em);
+      border-radius: 50%;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+  }
 }
 .sidebar {
   width: 100%;
