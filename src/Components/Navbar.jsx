@@ -64,7 +64,7 @@ export default function Navbar() {
 
         {/* <SingOutButton /> */}
       </div>
-      <SideBare isOpen={sideBarOpen} />
+      {sideBarOpen ? <SideBare isOpen={sideBarOpen} /> : ''}
     </>
   );
 }
