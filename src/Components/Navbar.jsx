@@ -5,12 +5,12 @@ import SingOutButton from '../Components/SingOutButton';
 import { UserContext } from './../Firebase/context';
 import useOutsideClick from '../assets/useOutsideClick';
 
-const SideBare = ({ isOpen, innerRef }) => {
+const SideBare = ({ isOpen }) => {
   const sidebarClasse = isOpen ? 'sidebar--is-open' : 'sidebar--is-close';
 
   return (
     <div className={'sidebar ' + sidebarClasse}>
-      <div ref={innerRef} className='sidebar__container'>
+      <div className='sidebar__container'>
         <Link className='sidebar__container__elements' to={'/history'}>
           History
         </Link>
