@@ -34,33 +34,6 @@
     }
   }
 }
-.sidebar {
-  width: 100%;
-  position: absolute;
-  height: calc(100% - 50px);
-  top: 50px;
-  transition: left 0.3s ease-in-out;
-  background-color: $transparendBackground;
-  z-index: 1;
-
-  &__container {
-    display: inline-flex;
-    height: 100%;
-    flex-direction: column;
-    width: auto;
-    background-color: $whiteColor;
-    &__elements {
-      margin: 0.3rem 1rem;
-    }
-  }
-
-  &--is-open {
-    left: 0;
-  }
-  &--is-close {
-    left: -100%;
-  }
-}
 
 // animation
 @keyframes menuRotation {
