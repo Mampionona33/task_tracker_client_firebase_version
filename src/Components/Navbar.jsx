@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom';
 import '../styles/Navbar.scss';
 import SingOutButton from '../Components/SingOutButton';
 import { UserContext } from './../Firebase/context';
+import useOutsideClick from '../assets/useOutsideClick';
 
-const SideBare = ({ isOpen }) => {
+const SideBare = ({ isOpen, innerRef }) => {
   const sidebarClasse = isOpen ? 'sidebar--is-open' : 'sidebar--is-close';
 
   return (
     <div className={'sidebar ' + sidebarClasse}>
-      <div className='sidebar__container'>
+      <div ref={innerRef} className='sidebar__container'>
         <Link className='sidebar__container__elements' to={'/history'}>
           History
         </Link>
@@ -25,12 +26,17 @@ export default function Navbar() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [showSignOutButton, setShowSignOutButton] = useState(false);
   const { user } = useContext(UserContext);
+  const ref = useOutsideClick(handleClickOutside);
 
-  console.log(user);
+  function handleClickOutside() {
+    setSideBarOpen(false);
+    setShowSignOutButton(false);
+  }
 
   const handleClickMenu = (event) => {
     event.preventDefault();
     setSideBarOpen(!sideBarOpen);
+    event.stopPropagation(); // stopping the propagation of the handleClickOutside
   };
 
   const handleClickAvatar = (event) => {
@@ -43,6 +49,7 @@ export default function Navbar() {
       <div className='navbar'>
         <button
           type='button'
+          ref={ref}
           className='navbar__button--menu'
           onClick={(e) => handleClickMenu(e)}
         >
@@ -51,7 +58,7 @@ export default function Navbar() {
               menu
             </span>
           ) : (
-            <span class='material-icons-round navbar__button__menu--toggle'>
+            <span className='material-icons-round navbar__button__menu--toggle'>
               close
             </span>
           )}
@@ -74,7 +81,7 @@ export default function Navbar() {
         )}
       </div>
       {sideBarOpen ? <SideBare isOpen={sideBarOpen} /> : ''}
-      {showSignOutButton ? <SingOutButton /> : ''}
+      {showSignOutButton ? <SingOutButton innerRef={ref} /> : ''}
     </>
   );
 }

@@ -1,8 +1,9 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
 import { auth } from '../Firebase/firebase';
+import '../styles/variables.scss';
 
-export default function SingOutButton() {
+export default function SingOutButton({ innerRef }) {
   const handleClickSingout = (event) => {
     event.preventDefault();
     signOut(auth)
@@ -19,9 +20,12 @@ export default function SingOutButton() {
 
   return (
     <button
+      ref={innerRef}
       type='button'
+      className='signOut__button'
       onClick={handleClickSingout}
       style={{
+        backgroundColor: '#4b4b4b',
         position: 'absolute',
         top: '50px',
         right: '0',
