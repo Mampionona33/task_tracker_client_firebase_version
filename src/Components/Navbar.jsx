@@ -12,23 +12,33 @@ export default function Navbar() {
   const [showSignOutButton, setShowSignOutButton] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useContext(UserContext);
+
+  /* 
+    The useOutsideClick is fired on components mount
+    It listen to all click in the document
+  */
   const refSidebar = useOutsideClick(handleClickOutsideSidbar);
   const refSingOut = useOutsideClick(handleClickOutSignOut);
 
+  // hide sidebar and modal on click outside thems
   function handleClickOutsideSidbar() {
     setIsModalOpen(false);
     setSideBarOpen(false);
   }
+
+  // hide SignOut button on click outside it
   function handleClickOutSignOut() {
     setShowSignOutButton(false);
   }
 
+  // execut when menu button is clicked
   const handleClickMenu = (event) => {
     event.preventDefault();
     setSideBarOpen(!sideBarOpen);
     setIsModalOpen(!isModalOpen);
   };
 
+  // execute when avatar icon is clicked
   const handleClickAvatar = (event) => {
     event.preventDefault();
     setShowSignOutButton(!showSignOutButton);
