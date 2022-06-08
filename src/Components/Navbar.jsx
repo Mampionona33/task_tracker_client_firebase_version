@@ -33,26 +33,23 @@ export default function Navbar() {
   return (
     <>
       <div className='navbar'>
-        <div className='sidebar_modal' ref={refSidebar}>
+        <div className='navbar__sidebar' ref={refSidebar}>
           <button
             type='button'
             // adding ref to be able to use useOutsideClick in childe components
-            className='navbar__button--menu'
+            className='navbar__sidebar__buton'
             onClick={(e) => handleClickMenu(e)}
           >
             {!sideBarOpen ? (
-              <span className='material-icons-round navbar__button__menu--toggle'>
-                menu
-              </span>
+              <span className='material-icons-round '>menu</span>
             ) : (
-              <span className='material-icons-round navbar__button__menu--toggle'>
-                close
-              </span>
+              <span className='material-icons-round '>close</span>
             )}
           </button>
           {sideBarOpen ? <SideBar /> : ''}
         </div>
-        <div className='signOut__container' ref={refSingOut}>
+        <div className='navbar__modal'></div>
+        <div className='navbar__signOut' ref={refSingOut}>
           {user ? (
             <button
               onClick={(e) => handleClickAvatar(e)}

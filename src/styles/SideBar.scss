@@ -1,0 +1,11 @@
+@import './variables.scss';
+
+.sidebar {
+  position: absolute;
+  top: 50px;
+  height: calc(100vh - 50px);
+  background-color: $whiteColor;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}

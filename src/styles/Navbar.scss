@@ -10,6 +10,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  &__modal {
+    background-color: $transparendBackground;
+    position: absolute;
+    top: 50px;
+    width: 100vw;
+    height: calc(100vh - 50px);
+    z-index: 1;
+  }
+
   &__button__menu--toggle {
     &:active {
       animation-name: menuRotation;
