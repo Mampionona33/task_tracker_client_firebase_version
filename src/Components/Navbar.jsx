@@ -60,7 +60,7 @@ export default function Navbar() {
               <span className='material-icons-round '>close</span>
             )}
           </button>
-          {sideBarOpen ? <SideBar isOpen={sideBarOpen} /> : ''}
+          {sideBarOpen ? <SideBar isOpen={sideBarOpen}  /> : ''}
         </div>
         <BackgroundModal isOpen={isModalOpen} />
         <div className='navbar__signOut' ref={refSingOut}>

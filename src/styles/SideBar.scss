@@ -6,24 +6,21 @@
   background-color: $whiteColor;
   top: 50px;
   z-index: 2;
-  left: 0;
   display: flex;
   width: fit-content;
   flex-direction: column;
-  animation: test 1s alternate;
-
-  &--open {
-    left: 0;
-    background-color: red;
-  }
-
-  &--close {
-    left: -15vw;
-    display: none;
+  opacity: 0;
+  transform: translateX(-15);
+  transition: opacity 3s ,transform 3s;
+}
+.--in {
+  &--visible {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
-@keyframes test {
+@keyframes horizontalRoll {
   from {
     left: -15vw;
   }
