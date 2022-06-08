@@ -5,15 +5,18 @@ import SingOutButton from '../Components/SingOutButton';
 import { UserContext } from './../Firebase/context';
 import useOutsideClick from '../assets/useOutsideClick';
 import SideBar from './SideBar';
+import BackgroundModal from './backgroundModal';
 
 export default function Navbar() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
   const [showSignOutButton, setShowSignOutButton] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const { user } = useContext(UserContext);
   const refSidebar = useOutsideClick(handleClickOutsideSidbar);
   const refSingOut = useOutsideClick(handleClickOutSignOut);
 
   function handleClickOutsideSidbar() {
+    setIsModalOpen(false);
     setSideBarOpen(false);
   }
   function handleClickOutSignOut() {
@@ -23,6 +26,7 @@ export default function Navbar() {
   const handleClickMenu = (event) => {
     event.preventDefault();
     setSideBarOpen(!sideBarOpen);
+    setIsModalOpen(!isModalOpen);
   };
 
   const handleClickAvatar = (event) => {
@@ -48,7 +52,7 @@ export default function Navbar() {
           </button>
           {sideBarOpen ? <SideBar /> : ''}
         </div>
-        <div className='navbar__modal'></div>
+        <BackgroundModal isOpen={isModalOpen} />
         <div className='navbar__signOut' ref={refSingOut}>
           {user ? (
             <button

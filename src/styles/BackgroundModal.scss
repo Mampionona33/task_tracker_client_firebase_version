@@ -1,0 +1,9 @@
+@import './variables.scss';
+
+.modal {
+  position: absolute;
+  top: 50px;
+  width: 100vw;
+  height: calc(100vh - 50px);
+  background-color: $transparendBackground;
+}
