@@ -49,7 +49,7 @@ export default function Navbar() {
       <div className='navbar'>
         <button
           type='button'
-          ref={ref}
+          ref={ref} // adding ref to be able to use useOutsideClick in childe components
           className='navbar__button--menu'
           onClick={(e) => handleClickMenu(e)}
         >
@@ -81,7 +81,7 @@ export default function Navbar() {
         )}
       </div>
       {sideBarOpen ? <SideBare isOpen={sideBarOpen} /> : ''}
-      {showSignOutButton ? <SingOutButton innerRef={ref} /> : ''}
+      {showSignOutButton ? <SingOutButton /> : ''}
     </>
   );
 }
