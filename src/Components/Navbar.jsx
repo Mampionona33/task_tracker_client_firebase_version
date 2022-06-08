@@ -5,7 +5,7 @@ import SingOutButton from '../Components/SingOutButton';
 import { UserContext } from './../Firebase/context';
 import useOutsideClick from '../assets/useOutsideClick';
 import SideBar from './SideBar';
-import BackgroundModal from './backgroundModal';
+import BackgroundModal from './BackgroundModal';
 
 export default function Navbar() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
