@@ -6,6 +6,7 @@ import History from './Page/History';
 import { UserContext } from './Firebase/context';
 import ProtectedRoute from './Page/ProtectedRoute';
 import './styles/App.scss';
+import Navbar from './Components/Navbar';
 
 export default function App() {
   const { user } = useContext(UserContext);
@@ -13,6 +14,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
+      {isUserLogged && <Navbar />}
       <Routes>
         <Route index element={!isUserLogged ? <Login /> : <Dashboard />} />
         <Route

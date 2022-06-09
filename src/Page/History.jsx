@@ -4,7 +4,6 @@ export default function History() {
   return (
     <>
       <h1>History</h1>
-      <Link to={'/dashboard'}>Dashboard</Link>
     </>
   );
 }
