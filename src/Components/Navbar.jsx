@@ -1,12 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
 import '../styles/Navbar.scss';
 import SingOutButton from '../Components/SingOutButton';
 import { UserContext } from './../Firebase/context';
 import useOutsideClick from '../assets/useOutsideClick';
-import SideBar from './SideBar';
-import BackgroundModal from './BackgroundModal';
-import Sliding from './Sliding';
 
 export default function Navbar() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -61,7 +57,6 @@ export default function Navbar() {
               <span className='material-icons-round '>close</span>
             )}
           </button>
-          <SideBar isOpen={sideBarOpen} />
         </div>
         <div className='navbar__signOut' ref={refSingOut}>
           {user ? (
