@@ -24,4 +24,28 @@ export const buttonCloseVariants = {
       type: 'just',
     },
   },
+  exit: {
+    opacity: 0,
+  },
+};
+
+export const sidebarVariants = {
+  hidden: {
+    x: '-15vw',
+    opacity: 0,
+  },
+  animate: {
+    x: '0',
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      damping: 20,
+      stiffness: 95,
+    },
+  },
+  exit: {
+    width: 0,
+    opacity: 0,
+    backgroundColor: 'red',
+  },
 };

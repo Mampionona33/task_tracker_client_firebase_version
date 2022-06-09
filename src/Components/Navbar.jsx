@@ -38,7 +38,7 @@ export default function Navbar() {
           )}
         </button>
       </div>
-      <SideBar />
+      {toggleSideBar && <SideBar />}
     </div>
   );
 }
