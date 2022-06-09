@@ -10,4 +10,11 @@
   display: flex;
   width: fit-content;
   flex-direction: column;
+  &__components {
+    display: flex;
+    flex-direction: column;
+    background-color: $whiteColor;
+    width: fit-content;
+    height: calc(100vh - 50px);
+  }
 }

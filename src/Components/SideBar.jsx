@@ -8,9 +8,12 @@ import Sliding from './Sliding';
 export default function SideBar({ isOpen }) {
   return (
     <Sliding classes={'sidebar'} show={isOpen}>
-      <Link to={'/history'}>history</Link>
-      <Link to={'/dashboard'}>dashbord</Link>
-      <BackgroundModal isOpen={isOpen} />
+      <BackgroundModal>
+        <div className='sidebar__components'>
+          <Link to={'/history'}>history</Link>
+          <Link to={'/dashboard'}>dashboard</Link>
+        </div>
+      </BackgroundModal>
     </Sliding>
   );
 }

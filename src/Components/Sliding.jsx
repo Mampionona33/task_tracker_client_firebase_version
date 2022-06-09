@@ -11,11 +11,12 @@ export default function Sliding({ show, children, classes }) {
   useEffect(() => {
     if (show) setRender(true);
   }, [show]);
+
   return (
     shouldRender && (
       <div
         className={classes}
-        style={{ animation: `${show ? 'slideIn' : 'slideOut'} 0.3s` }}
+        style={{ animation: `${show ? 'slideOut' : 'slideIn'} 0.3s` }}
         onAnimationEnd={onAnimationEnd}
       >
         {children}
