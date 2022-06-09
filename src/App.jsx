@@ -7,27 +7,30 @@ import { UserContext } from './Firebase/context';
 import ProtectedRoute from './Page/ProtectedRoute';
 import './styles/App.scss';
 import Navbar from './Components/Navbar';
+import { AnimatePresence } from 'framer-motion';
 
 export default function App() {
   const { user } = useContext(UserContext);
   const isUserLogged = localStorage.getItem('taskTrackerUserisLoggeIn');
 
   return (
-    <BrowserRouter>
-      {isUserLogged && <Navbar />}
-      <Routes>
-        <Route index element={!isUserLogged ? <Login /> : <Dashboard />} />
-        <Route
-          path='login'
-          element={!isUserLogged ? <Login /> : <Dashboard />}
-        />
-        <Route
-          element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
-        >
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/history' element={<History />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <AnimatePresence exitBeforeEnter>
+      <BrowserRouter>
+        {isUserLogged && <Navbar />}
+        <Routes>
+          <Route index element={!isUserLogged ? <Login /> : <Dashboard />} />
+          <Route
+            path='login'
+            element={!isUserLogged ? <Login /> : <Dashboard />}
+          />
+          <Route
+            element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
+          >
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/history' element={<History />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </AnimatePresence>
   );
 }

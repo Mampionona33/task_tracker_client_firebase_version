@@ -1,26 +1,40 @@
 import { motion } from 'framer-motion';
 import React, { useState } from 'react';
 import '../styles/Navbar.scss';
-import { buttonVariants } from './../animations/framerVariants';
+import {
+  buttonCloseVariants,
+  buttonMenuVariants,
+} from './../animations/framerVariants';
 
 export default function Navbar() {
   const [toggleSideBar, setToggleSideBar] = useState(false);
 
   return (
     <div className='navbar'>
-      <motion.button
+      <button
         className='navbar__menu__button'
         onClick={() => setToggleSideBar(!toggleSideBar)}
-        variants={buttonVariants}
-        initial={buttonVariants.hidden}
-        animate={buttonVariants.visible}
       >
         {!toggleSideBar ? (
-          <span className='material-icons-round'>menu</span>
+          <motion.span
+            variants={buttonMenuVariants}
+            initial={buttonMenuVariants.hidden}
+            animate={buttonMenuVariants.animate}
+            className='material-icons-round'
+          >
+            menu
+          </motion.span>
         ) : (
-          <span class='material-icons-round'>close</span>
+          <motion.span
+            variants={buttonCloseVariants}
+            initial={buttonCloseVariants.hidden}
+            animate={buttonCloseVariants.animate}
+            className='material-icons-round'
+          >
+            close
+          </motion.span>
         )}
-      </motion.button>
+      </button>
     </div>
   );
 }
