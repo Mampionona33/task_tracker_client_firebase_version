@@ -6,6 +6,7 @@ import { UserContext } from './../Firebase/context';
 import useOutsideClick from '../assets/useOutsideClick';
 import SideBar from './SideBar';
 import BackgroundModal from './BackgroundModal';
+import Sliding from './Sliding';
 
 export default function Navbar() {
   const [sideBarOpen, setSideBarOpen] = useState(false);
@@ -60,9 +61,8 @@ export default function Navbar() {
               <span className='material-icons-round '>close</span>
             )}
           </button>
-          {sideBarOpen ? <SideBar isOpen={sideBarOpen}  /> : ''}
+          <SideBar isOpen={sideBarOpen} />
         </div>
-        <BackgroundModal isOpen={isModalOpen} />
         <div className='navbar__signOut' ref={refSingOut}>
           {user ? (
             <button

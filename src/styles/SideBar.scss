@@ -5,26 +5,9 @@
   height: calc(100vh - 50px);
   background-color: $whiteColor;
   top: 50px;
-  z-index: 2;
+  left: 0;
+  z-index: 2 !important;
   display: flex;
   width: fit-content;
   flex-direction: column;
-  opacity: 0;
-  transform: translateX(-15);
-  transition: opacity 3s ,transform 3s;
-}
-.--in {
-  &--visible {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes horizontalRoll {
-  from {
-    left: -15vw;
-  }
-  to {
-    left: 0;
-  }
 }
