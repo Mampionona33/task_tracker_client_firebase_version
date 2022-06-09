@@ -1,47 +1,5 @@
 @import './variables.scss';
 
 .navbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 50px;
   background-color: $primaryDarckColor;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  &__button__menu--toggle {
-    &:active {
-      animation-name: menuRotation;
-      animation-duration: 0.1s;
-    }
-  }
-  &__userAvatar {
-    &__button {
-      border: 0.1em solid $whiteColor !important;
-      height: 40px;
-      width: 40px;
-      border-radius: 50%;
-      margin-right: 1em;
-      background-color: rgba(255, 255, 255, 0);
-      &__img {
-        display: block;
-        background-size: cover;
-        background-repeat: no-repeat;
-        font-size: 0;
-        padding: 14px;
-      }
-    }
-  }
-}
-
-// animation
-@keyframes menuRotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
 }
