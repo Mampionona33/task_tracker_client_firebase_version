@@ -1,9 +1,10 @@
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import React, { useState } from 'react';
 import '../styles/Navbar.scss';
 import {
   buttonCloseVariants,
   buttonMenuVariants,
+  sidebarVariants,
 } from './../animations/framerVariants';
 import SideBar from './SideBar';
 
@@ -38,7 +39,18 @@ export default function Navbar() {
           )}
         </button>
       </div>
-      {toggleSideBar && <SideBar />}
+      <AnimatePresence>
+        {toggleSideBar && (
+          <motion.div
+            variants={sidebarVariants}
+            initial={sidebarVariants.hidden}
+            animate={sidebarVariants.animate}
+            exit={sidebarVariants.exit}
+          >
+            <SideBar />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

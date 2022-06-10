@@ -38,14 +38,16 @@ export const sidebarVariants = {
     x: '0',
     opacity: 1,
     transition: {
+      type: 'tween',
+    },
+  },
+  exit: {
+    x: '-15vw',
+    opacity: 0,
+    transition: {
       type: 'spring',
       damping: 20,
       stiffness: 95,
     },
-  },
-  exit: {
-    width: 0,
-    opacity: 0,
-    backgroundColor: 'red',
   },
 };

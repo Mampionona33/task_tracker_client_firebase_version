@@ -14,23 +14,21 @@ export default function App() {
   const isUserLogged = localStorage.getItem('taskTrackerUserisLoggeIn');
 
   return (
-    <AnimatePresence exitBeforeEnter>
-      <BrowserRouter>
-        {isUserLogged && <Navbar />}
-        <Routes>
-          <Route index element={!isUserLogged ? <Login /> : <Dashboard />} />
-          <Route
-            path='login'
-            element={!isUserLogged ? <Login /> : <Dashboard />}
-          />
-          <Route
-            element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
-          >
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/history' element={<History />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </AnimatePresence>
+    <BrowserRouter>
+      {isUserLogged && <Navbar />}
+      <Routes>
+        <Route index element={!isUserLogged ? <Login /> : <Dashboard />} />
+        <Route
+          path='login'
+          element={!isUserLogged ? <Login /> : <Dashboard />}
+        />
+        <Route
+          element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
+        >
+          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/history' element={<History />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
