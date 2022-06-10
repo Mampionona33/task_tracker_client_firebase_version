@@ -2,5 +2,9 @@
 
 .navbar {
   background-color: $primaryDarckColor;
+  display: flex;
+  justify-content: space-between;
   height: 4vh;
+  align-items: center;
+  color: $whiteColor;
 }
