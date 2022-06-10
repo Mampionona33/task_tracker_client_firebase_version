@@ -50,7 +50,7 @@ export default function Navbar() {
           variants={navbarTitleVariants}
           initial={navbarTitleVariants.hidden}
           animate={navbarTitleVariants.visible}
-          transition={{type:''}}
+          transition={{ type: '' }}
           className='navbar__title'
         >
           {location.pathname.slice(1).charAt(0).toUpperCase() +
@@ -63,9 +63,9 @@ export default function Navbar() {
           <motion.div
             key={'sidebar'}
             variants={sidebarVariants}
-            initial={sidebarVariants.hidden}
-            animate={sidebarVariants.animate}
-            exit={sidebarVariants.exit}
+            initial='hidden'
+            animate='animate'
+            exit='exit'
           >
             <SideBar />
           </motion.div>
