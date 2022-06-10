@@ -15,7 +15,7 @@ export default function App() {
   const isUserLogged = localStorage.getItem('taskTrackerUserisLoggeIn');
 
   return (
-    <AnimatePresence>
+    <AnimatePresence exitBeforeEnter>
       {isUserLogged && <Navbar />}
       <Routes location={location} key={location.key}>
         <Route index element={!isUserLogged ? <Login /> : <Dashboard />} />

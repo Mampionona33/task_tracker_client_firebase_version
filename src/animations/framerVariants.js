@@ -51,3 +51,18 @@ export const sidebarVariants = {
     },
   },
 };
+
+export const navbarTitleVariants = {
+  hidden: {
+    y: '15vw',
+    opacity: 0,
+  },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: 'spring',
+      duration: 0.5,
+    },
+  },
+};

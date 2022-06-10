@@ -6,6 +6,7 @@ import '../styles/Navbar.scss';
 import {
   buttonCloseVariants,
   buttonMenuVariants,
+  navbarTitleVariants,
   sidebarVariants,
 } from './../animations/framerVariants';
 import SideBar from './SideBar';
@@ -16,43 +17,51 @@ export default function Navbar() {
   const location = useLocation();
 
   return (
-    <AnimatePresence>
-      <div className='bars'>
-        <div className='navbar'>
-          <button
-            type='button'
-            className='navbar__menu__button'
-            onClick={() => setToggleSideBar(!toggleSideBar)}
-          >
-            {!toggleSideBar ? (
-              <motion.span
-                variants={buttonMenuVariants}
-                initial={buttonMenuVariants.hidden}
-                animate={buttonMenuVariants.animate}
-                className='material-icons-round'
-              >
-                menu
-              </motion.span>
-            ) : (
-              <motion.span
-                variants={buttonCloseVariants}
-                initial={buttonCloseVariants.hidden}
-                animate={buttonCloseVariants.animate}
-                className='material-icons-round'
-              >
-                close
-              </motion.span>
-            )}
-          </button>
-          <h1 className='navbar__title'>
-            {location.pathname.slice(1).charAt(0).toUpperCase() +
-              location.pathname.slice(2)}
-          </h1>
-          <button type='button'>user</button>
-        </div>
-
+    <div className='bars'>
+      <div className='navbar'>
+        <button
+          type='button'
+          className='navbar__menu__button'
+          onClick={() => setToggleSideBar(!toggleSideBar)}
+        >
+          {!toggleSideBar ? (
+            <motion.span
+              key={'iconMenu'}
+              variants={buttonMenuVariants}
+              initial={buttonMenuVariants.hidden}
+              animate={buttonMenuVariants.animate}
+              className='material-icons-round'
+            >
+              menu
+            </motion.span>
+          ) : (
+            <motion.span
+              key={'iconClose'}
+              variants={buttonCloseVariants}
+              initial={buttonCloseVariants.hidden}
+              animate={buttonCloseVariants.animate}
+              className='material-icons-round'
+            >
+              close
+            </motion.span>
+          )}
+        </button>
+        <motion.h1
+          variants={navbarTitleVariants}
+          initial={navbarTitleVariants.hidden}
+          animate={navbarTitleVariants.visible}
+          transition={{type:''}}
+          className='navbar__title'
+        >
+          {location.pathname.slice(1).charAt(0).toUpperCase() +
+            location.pathname.slice(2)}
+        </motion.h1>
+        <button type='button'>user</button>
+      </div>
+      <AnimatePresence exitBeforeEnter>
         {toggleSideBar && (
           <motion.div
+            key={'sidebar'}
             variants={sidebarVariants}
             initial={sidebarVariants.hidden}
             animate={sidebarVariants.animate}
@@ -61,7 +70,7 @@ export default function Navbar() {
             <SideBar />
           </motion.div>
         )}
-      </div>
-    </AnimatePresence>
+      </AnimatePresence>
+    </div>
   );
 }
