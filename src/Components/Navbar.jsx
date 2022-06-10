@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { AnimationContext } from '../assets/animationContext';
 import '../styles/Navbar.scss';
 import {
   buttonCloseVariants,
@@ -9,7 +10,8 @@ import {
 import SideBar from './SideBar';
 
 export default function Navbar() {
-  const [toggleSideBar, setToggleSideBar] = useState(false);
+  const context = useContext(AnimationContext);
+  const { toggleSideBar, setToggleSideBar } = context;
 
   return (
     <div className='bars'>

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Dashboard from './Page/Dashboard';
 import Login from './Page/Login';
 import History from './Page/History';
@@ -10,13 +10,14 @@ import Navbar from './Components/Navbar';
 import { AnimatePresence } from 'framer-motion';
 
 export default function App() {
+  const location = useLocation();
   const { user } = useContext(UserContext);
   const isUserLogged = localStorage.getItem('taskTrackerUserisLoggeIn');
 
   return (
-    <BrowserRouter>
+    <AnimatePresence>
       {isUserLogged && <Navbar />}
-      <Routes>
+      <Routes location={location} key={location.key}>
         <Route index element={!isUserLogged ? <Login /> : <Dashboard />} />
         <Route
           path='login'
@@ -29,6 +30,6 @@ export default function App() {
           <Route path='/history' element={<History />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </AnimatePresence>
   );
 }
