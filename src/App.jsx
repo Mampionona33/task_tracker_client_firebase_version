@@ -18,7 +18,6 @@ export default function App() {
 
   return (
     <>
-      {isUserLogged && <Navbar />}
       <AnimatePresence
         exitBeforeEnter
         onExitComplete={() => setToggleSideBar(false)}
