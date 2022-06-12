@@ -49,8 +49,8 @@ export default function Navbar() {
         <motion.h1
           variants={navbarTitleVariants}
           initial='hidden'
-          animate='animate'
-          transition={{ type: '' }}
+          animate='visible'
+          exit='exit'
           className='navbar__title'
         >
           {location.pathname.slice(1).charAt(0).toUpperCase() +

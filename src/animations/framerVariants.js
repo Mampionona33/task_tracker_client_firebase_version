@@ -54,12 +54,20 @@ export const sidebarVariants = {
 
 export const navbarTitleVariants = {
   hidden: {
-    y: '15vw',
+    y: '15vh',
     opacity: 0,
   },
   visible: {
     y: 0,
     opacity: 1,
+    transition: {
+      type: 'spring',
+      duration: 0.5,
+    },
+  },
+  exit: {
+    opacity: 0,
+    y: '-15vh',
     transition: {
       type: 'spring',
       duration: 0.5,
