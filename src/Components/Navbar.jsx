@@ -28,8 +28,8 @@ export default function Navbar() {
             <motion.span
               key={'iconMenu'}
               variants={buttonMenuVariants}
-              initial={buttonMenuVariants.hidden}
-              animate={buttonMenuVariants.animate}
+              initial='hidden'
+              animate='animate'
               className='material-icons-round'
             >
               menu
@@ -38,8 +38,8 @@ export default function Navbar() {
             <motion.span
               key={'iconClose'}
               variants={buttonCloseVariants}
-              initial={buttonCloseVariants.hidden}
-              animate={buttonCloseVariants.animate}
+              initial='hidden'
+              animate='animate'
               className='material-icons-round'
             >
               close
@@ -48,8 +48,8 @@ export default function Navbar() {
         </button>
         <motion.h1
           variants={navbarTitleVariants}
-          initial={navbarTitleVariants.hidden}
-          animate={navbarTitleVariants.visible}
+          initial='hidden'
+          animate='animate'
           transition={{ type: '' }}
           className='navbar__title'
         >
