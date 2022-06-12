@@ -70,7 +70,7 @@ export const navbarTitleVariants = {
     y: '-15vh',
     transition: {
       type: 'spring',
-      duration: 0.5,
+      duration: 0.3,
     },
   },
 };
