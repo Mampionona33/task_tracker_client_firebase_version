@@ -1,5 +1,11 @@
 import React, { useContext } from 'react';
-import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from 'react-router-dom';
 import Dashboard from './Page/Dashboard';
 import Login from './Page/Login';
 import History from './Page/History';
@@ -23,10 +29,13 @@ export default function App() {
         onExitComplete={() => setToggleSideBar(false)}
       >
         <Routes location={location} key={location.key}>
-          <Route index element={!isUserLogged ? <Login /> : <Dashboard />} />
+          <Route
+            index
+            element={!isUserLogged ? <Login /> : <Navigate to={'/dashboard'} />}
+          />
           <Route
             path='login'
-            element={!isUserLogged ? <Login /> : <Dashboard />}
+            element={!isUserLogged ? <Login /> : <Navigate to={'/dashboard'} />}
           />
           <Route
             element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
