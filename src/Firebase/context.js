@@ -18,6 +18,13 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (result) => {
+      // try {
+      //   setUser(result);
+      //   setUserAvatar(result.photoURL);
+      // } catch (error) {
+      //   console.log(error);
+      // }
+
       if (result) {
         setUser(result);
         setUserAvatar(result.photoURL);

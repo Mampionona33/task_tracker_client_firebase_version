@@ -22,11 +22,11 @@ export default function Navbar() {
   // const userAvatar = user && user.photoURL;
   const [userPhotoUrl, setUserPhotoUrl] = useState(null);
   useEffect(() => {
-    if (user) {
-      setUserPhotoUrl(user.photoURL);
+    if (userAvatar) {
+      setUserPhotoUrl(userAvatar);
       console.log(userPhotoUrl);
     }
-  }, [user]);
+  }, [userAvatar]);
 
   return (
     <div className='bars'>
@@ -79,6 +79,9 @@ export default function Navbar() {
             <img
               className='navbar__userAvatar__button__image'
               src={userAvatar}
+              // Adding referrerPolicy to prevent stric origine
+              // error forbiden 403
+              referrerPolicy='no-referrer'
               alt={user.displayName.slice(0, user.displayName.indexOf(' '))}
             />
           )}
