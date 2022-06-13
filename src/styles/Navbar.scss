@@ -9,4 +9,12 @@
   min-width: 180px;
   align-items: center;
   color: $whiteColor;
+  &__userAvatar {
+    &__button {
+      &__image {
+        max-width: 30px;
+        max-height: 30px;
+      }
+    }
+  }
 }

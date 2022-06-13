@@ -1,7 +1,6 @@
 import React from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createContext } from 'react';
 import { auth } from './firebase';
 
@@ -15,11 +14,13 @@ export const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [userAvatar, setUserAvatar] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (result) => {
       if (result) {
         setUser(result);
+        setUserAvatar(result.photoURL);
         localStorage.setItem('taskTrackerUserisLoggeIn', 'true');
       }
     });
@@ -33,6 +34,8 @@ export const AuthContextProvider = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={{ user }}>{children}</UserContext.Provider>
+    <UserContext.Provider value={{ user, userAvatar }}>
+      {children}
+    </UserContext.Provider>
   );
 };

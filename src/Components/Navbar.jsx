@@ -17,13 +17,14 @@ export default function Navbar() {
   const context = useContext(AnimationContext);
   const { toggleSideBar, setToggleSideBar } = context;
   const location = useLocation();
-  const { user } = useContext(UserContext);
+  const { user, userAvatar } = useContext(UserContext);
   const [signOutBtnOpen, setSignOutBtnOpen] = useState(false);
   // const userAvatar = user && user.photoURL;
   const [userPhotoUrl, setUserPhotoUrl] = useState(null);
   useEffect(() => {
     if (user) {
-      setUserPhotoUrl(user.photoUrl);
+      setUserPhotoUrl(user.photoURL);
+      console.log(userPhotoUrl);
     }
   }, [user]);
 
@@ -70,12 +71,14 @@ export default function Navbar() {
             location.pathname.slice(2)}
         </motion.h1>
         <button
+          className='navbar__userAvatar__button'
           type='button'
           onClick={() => setSignOutBtnOpen(!signOutBtnOpen)}
         >
           {user && (
             <img
-              src={userPhotoUrl}
+              className='navbar__userAvatar__button__image'
+              src={userAvatar}
               alt={user.displayName.slice(0, user.displayName.indexOf(' '))}
             />
           )}
