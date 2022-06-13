@@ -33,27 +33,30 @@ export default function Navbar() {
           className='navbar__menu__button'
           onClick={() => setToggleSideBar(!toggleSideBar)}
         >
-          {!toggleSideBar ? (
-            <motion.span
-              key={'iconMenu'}
-              variants={buttonMenuVariants}
-              initial='hidden'
-              animate='animate'
-              className='material-icons-round'
-            >
-              menu
-            </motion.span>
-          ) : (
-            <motion.span
-              key={'iconClose'}
-              variants={buttonCloseVariants}
-              initial='hidden'
-              animate='animate'
-              className='material-icons-round'
-            >
-              close
-            </motion.span>
-          )}
+          <AnimatePresence exitBeforeEnter>
+            {!toggleSideBar ? (
+              <motion.span
+                key={'iconMenu'}
+                variants={buttonMenuVariants}
+                initial='hidden'
+                animate='animate'
+                className='material-icons-round'
+              >
+                menu
+              </motion.span>
+            ) : (
+              <motion.span
+                key={'iconClose'}
+                variants={buttonCloseVariants}
+                initial='hidden'
+                animate='animate'
+                exit='exit'
+                className='material-icons-round'
+              >
+                close
+              </motion.span>
+            )}
+          </AnimatePresence>
         </button>
         <motion.h1
           variants={navbarTitleVariants}
@@ -74,18 +77,19 @@ export default function Navbar() {
           )}
         </button>
       </div>
-
-      {toggleSideBar && (
-        <motion.div
-          key={'sidebar'}
-          variants={sidebarVariants}
-          initial='hidden'
-          animate='animate'
-          exit='exit'
-        >
-          <SideBar />
-        </motion.div>
-      )}
+      <AnimatePresence exitBeforeEnter>
+        {toggleSideBar && (
+          <motion.div
+            key={'sidebar'}
+            variants={sidebarVariants}
+            initial='hidden'
+            animate='animate'
+            exit='exit'
+          >
+            <SideBar />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
