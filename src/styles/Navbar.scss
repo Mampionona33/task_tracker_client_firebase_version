@@ -11,9 +11,11 @@
   color: $whiteColor;
   &__userAvatar {
     &__button {
+      align-items: center;
       &__image {
         max-width: 30px;
         max-height: 30px;
+        border-radius: 50%;
       }
     }
   }
