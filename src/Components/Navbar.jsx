@@ -11,12 +11,14 @@ import {
   sidebarVariants,
 } from './../animations/framerVariants';
 import SideBar from './SideBar';
+import SingOutButton from './SingOutButton';
 
 export default function Navbar() {
   const context = useContext(AnimationContext);
   const { toggleSideBar, setToggleSideBar } = context;
   const location = useLocation();
   const { user } = useContext(UserContext);
+  const [signOutBtnOpen, setSignOutBtnOpen] = useState(false);
   // const userAvatar = user && user.photoURL;
   const [userPhotoUrl, setUserPhotoUrl] = useState(null);
   useEffect(() => {
@@ -68,7 +70,10 @@ export default function Navbar() {
           {location.pathname.slice(1).charAt(0).toUpperCase() +
             location.pathname.slice(2)}
         </motion.h1>
-        <button type='button'>
+        <button
+          type='button'
+          onClick={() => setSignOutBtnOpen(!signOutBtnOpen)}
+        >
           {user && (
             <img
               src={userPhotoUrl}
@@ -77,19 +82,22 @@ export default function Navbar() {
           )}
         </button>
       </div>
-      <AnimatePresence exitBeforeEnter>
-        {toggleSideBar && (
-          <motion.div
-            key={'sidebar'}
-            variants={sidebarVariants}
-            initial='hidden'
-            animate='animate'
-            exit='exit'
-          >
-            <SideBar />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div className='navbar__container'>
+        <AnimatePresence exitBeforeEnter>
+          {toggleSideBar && (
+            <motion.div
+              key={'sidebar'}
+              variants={sidebarVariants}
+              initial='hidden'
+              animate='animate'
+              exit='exit'
+            >
+              <SideBar />
+            </motion.div>
+          )}
+        </AnimatePresence>
+        {signOutBtnOpen && <SingOutButton />}
+      </div>
     </div>
   );
 }

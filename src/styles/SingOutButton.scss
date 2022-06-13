@@ -1,4 +1,10 @@
-.SignOut {
-  position: absolute !important;
-  top: 50px;
+@import './variables.scss';
+.signOut {
+  &__button {
+    position: absolute;
+    right: 0;
+    background-color: $greyColor !important;
+    border-radius: 0 0 5px 5px;
+    margin-right: 1.5rem;
+  }
 }
