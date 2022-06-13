@@ -66,7 +66,12 @@ export default function Navbar() {
             location.pathname.slice(2)}
         </motion.h1>
         <button type='button'>
-          {user && <img src={userPhotoUrl} alt={user.displayName} />}
+          {user && (
+            <img
+              src={userPhotoUrl}
+              alt={user.displayName.slice(0, user.displayName.indexOf(' '))}
+            />
+          )}
         </button>
       </div>
 
