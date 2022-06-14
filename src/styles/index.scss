@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons+Round');
 @import './variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400&display=swap');
 
 body {
   margin: 0;
@@ -9,6 +10,7 @@ body {
   height: 100vh;
   background-repeat: no-repeat;
   background-size: cover;
+  font-family: Ubuntu, sans-serif;
 }
 
 // select all class that include 'button'
