@@ -89,21 +89,19 @@ export default function Navbar() {
           {signOutBtnOpen && <SingOutButton />}
         </div>
       </div>
-      <div className='navbar__container'>
-        <AnimatePresence exitBeforeEnter>
-          {toggleSideBar && (
-            <motion.div
-              key={'sidebar'}
-              variants={sidebarVariants}
-              initial='hidden'
-              animate='animate'
-              exit='exit'
-            >
-              <SideBar />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      <AnimatePresence exitBeforeEnter>
+        {toggleSideBar && (
+          <motion.div
+            key={'sidebar'}
+            variants={sidebarVariants}
+            initial='hidden'
+            animate='animate'
+            exit='exit'
+          >
+            <SideBar />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
