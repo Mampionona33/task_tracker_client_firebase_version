@@ -1,7 +1,7 @@
 @import './variables.scss';
 
 .navbar {
-  background-color: $primaryDarckColor;
+  background-color: $coolGrey;
   display: flex;
   justify-content: space-between;
   height: 6vh;
@@ -18,8 +18,8 @@
     &__button {
       display: flex;
       &__image {
-        max-width: 5vw;
-        max-height: 5vh;
+        max-width: 4vw;
+        max-height: 4vh;
         min-width: 25px;
         min-height: 25px;
         border-radius: 50%;

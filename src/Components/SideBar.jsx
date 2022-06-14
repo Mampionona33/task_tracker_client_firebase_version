@@ -12,12 +12,26 @@ export default function SideBar() {
   return (
     <>
       <div className='sidebar' ref={refSidebar}>
-        <Link onClick={() => setToggleSideBar(false)} to={'/history'}>
-          history
-        </Link>
-        <Link onClick={() => setToggleSideBar(false)} to={'/dashboard'}>
-          Dashboard
-        </Link>
+        <div className='sidebar__element'>
+          <span class='material-icons-round button'>dashboard</span>
+          <Link
+            className='sidebar__element__item'
+            onClick={() => setToggleSideBar(false)}
+            to={'/dashboard'}
+          >
+            Dashboard
+          </Link>
+        </div>
+        <div className='sidebar__element'>
+          <span class='material-icons-round button'>work_history</span>
+          <Link
+            className='sidebar__element__item'
+            onClick={() => setToggleSideBar(false)}
+            to={'/history'}
+          >
+            history
+          </Link>
+        </div>
       </div>
       <BackgroundModal />
     </>

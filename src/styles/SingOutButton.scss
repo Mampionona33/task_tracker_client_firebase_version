@@ -4,9 +4,14 @@
     position: absolute;
     top: 6vh;
     right: 1vw;
-    background-color: $greyColor !important;
+    background-color: $coolGrey !important;
     border-radius: 0 0 5px 5px;
+    color: $textGrey !important;
 
     padding: 0.2rem 0.8rem;
+    &:hover {
+      color: $whiteColor !important;
+      background-color: $warmGrey !important;
+    }
   }
 }
