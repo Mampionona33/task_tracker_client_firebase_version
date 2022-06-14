@@ -65,28 +65,39 @@ export default function Navbar() {
             location.pathname.slice(2)}
         </motion.h1>
 
-        {/* put the button avatar and the singOutButton inside one
+        <div className='navbar__rightButtonContainer'>
+          <button
+            type='button'
+            className='navbar__rightButtonContainer__newTask'
+          >
+            <span className='material-icons-round navbar__rightButtonContainer__newTask__icon'>
+              add_task
+            </span>
+            New Task
+          </button>
+          {/* put the button avatar and the singOutButton inside one
             div to be abble to use useOutsideClick and at the same
             time to be abble to remove singOutButton on click on
             the avatar icon  */}
-        <div className='signOut__container' ref={refSignOutButton}>
-          <button
-            className='navbar__userAvatar__button'
-            type='button'
-            onClick={() => setSignOutBtnOpen(!signOutBtnOpen)}
-          >
-            {user && (
-              <img
-                className='navbar__userAvatar__button__image'
-                src={user.photoURL}
-                // Adding referrerPolicy to prevent stric origine
-                // error forbiden 403
-                referrerPolicy='no-referrer'
-                alt={user.displayName.slice(0, user.displayName.indexOf(' '))}
-              />
-            )}
-          </button>
-          {signOutBtnOpen && <SingOutButton />}
+          <div className='signOut__container' ref={refSignOutButton}>
+            <button
+              className='navbar__userAvatar__button'
+              type='button'
+              onClick={() => setSignOutBtnOpen(!signOutBtnOpen)}
+            >
+              {user && (
+                <img
+                  className='navbar__userAvatar__button__image'
+                  src={user.photoURL}
+                  // Adding referrerPolicy to prevent stric origine
+                  // error forbiden 403
+                  referrerPolicy='no-referrer'
+                  alt={user.displayName.slice(0, user.displayName.indexOf(' '))}
+                />
+              )}
+            </button>
+            {signOutBtnOpen && <SingOutButton />}
+          </div>
         </div>
       </div>
       <AnimatePresence exitBeforeEnter>
