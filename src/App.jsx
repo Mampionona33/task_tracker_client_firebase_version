@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { StrictMode, useContext } from 'react';
 import {
   BrowserRouter,
   Navigate,
@@ -12,7 +12,6 @@ import History from './Page/History';
 import { UserContext } from './Firebase/context';
 import ProtectedRoute from './Page/ProtectedRoute';
 import './styles/App.scss';
-import Navbar from './Components/Navbar';
 import { AnimatePresence } from 'framer-motion';
 import { AnimationContext } from './assets/animationContext';
 
@@ -23,7 +22,7 @@ export default function App() {
   const isUserLogged = localStorage.getItem('taskTrackerUserisLoggeIn');
 
   return (
-    <>
+    <StrictMode>
       <AnimatePresence
         exitBeforeEnter
         onExitComplete={() => setToggleSideBar(false)}
@@ -45,6 +44,6 @@ export default function App() {
           </Route>
         </Routes>
       </AnimatePresence>
-    </>
+    </StrictMode>
   );
 }

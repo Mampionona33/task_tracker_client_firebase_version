@@ -68,6 +68,7 @@ export default function Navbar() {
           className='navbar__userAvatar__button'
           type='button'
           onClick={() => setSignOutBtnOpen(!signOutBtnOpen)}
+          ref={refSignOutBtn}
         >
           {user && (
             <img
@@ -95,7 +96,7 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-        {signOutBtnOpen && <SingOutButton innerRef={refSignOutBtn} />}
+        {signOutBtnOpen && <SingOutButton />}
       </div>
     </div>
   );
