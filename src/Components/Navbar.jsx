@@ -64,6 +64,11 @@ export default function Navbar() {
           {location.pathname.slice(1).charAt(0).toUpperCase() +
             location.pathname.slice(2)}
         </motion.h1>
+
+        {/* put the button avatar and the singOutButton inside one
+            div to be abble to use useOutsideClick and at the same
+            time to be abble to remove singOutButton on click on
+            the avatar icon  */}
         <div className='signOut__container' ref={refSignOutButton}>
           <button
             className='navbar__userAvatar__button'
