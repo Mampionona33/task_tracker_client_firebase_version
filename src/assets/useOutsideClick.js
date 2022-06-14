@@ -4,9 +4,13 @@ import React, { useEffect, useRef } from 'react';
     this function is used to listen click out side components.
     callback is the fonction to execute after a click is heard
     
-    exemple of usage
-    In Navbar.jsx to hide side bar and signout
-    button on click out side these components.
+    Usage:
+    Create const ref = useOutsideClick(()=>callback())
+    then add this ref to the component witch we want to close
+    when we click outside of it.
+
+    see exemple in SideBar.jsx 
+    
 */
 
 export default function useOutsideClick(callback) {

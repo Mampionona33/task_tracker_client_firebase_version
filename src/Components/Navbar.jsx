@@ -19,7 +19,6 @@ export default function Navbar() {
   const location = useLocation();
   const { user, userAvatar } = useContext(UserContext);
   const [signOutBtnOpen, setSignOutBtnOpen] = useState(false);
-  // const userAvatar = user && user.photoURL;
   const [userPhotoUrl, setUserPhotoUrl] = useState(null);
   useEffect(() => {
     if (userAvatar) {
