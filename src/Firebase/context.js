@@ -14,21 +14,15 @@ export const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [userAvatar, setUserAvatar] = useState(null);
+  const [erroR, setErroR] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (result) => {
-      // try {
-      //   setUser(result);
-      //   setUserAvatar(result.photoURL);
-      // } catch (error) {
-      //   console.log(error);
-      // }
-
-      if (result) {
+      try {
         setUser(result);
-        setUserAvatar(result.photoURL);
         localStorage.setItem('taskTrackerUserisLoggeIn', 'true');
+      } catch (error) {
+        setErroR.log(error.message);
       }
     });
     return () => {
@@ -36,12 +30,8 @@ export const AuthContextProvider = ({ children }) => {
     };
   }, []);
 
-  if (user) {
-    console.log(user.photoURL);
-  }
-
   return (
-    <UserContext.Provider value={{ user, userAvatar }}>
+    <UserContext.Provider value={{ user, erroR }}>
       {children}
     </UserContext.Provider>
   );

@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import React, { useContext, useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AnimationContext } from '../assets/animationContext';
+import useOutsideClick from '../assets/useOutsideClick';
 import { UserContext } from '../Firebase/context';
 import '../styles/Navbar.scss';
 import {
@@ -15,17 +16,11 @@ import SingOutButton from './SingOutButton';
 
 export default function Navbar() {
   const context = useContext(AnimationContext);
-  const { toggleSideBar, setToggleSideBar } = context;
+  const { toggleSideBar, setToggleSideBar, setSignOutBtnOpen, signOutBtnOpen } =
+    context;
   const location = useLocation();
-  const { user, userAvatar } = useContext(UserContext);
-  const [signOutBtnOpen, setSignOutBtnOpen] = useState(false);
-  const [userPhotoUrl, setUserPhotoUrl] = useState(null);
-  useEffect(() => {
-    if (userAvatar) {
-      setUserPhotoUrl(userAvatar);
-      console.log(userPhotoUrl);
-    }
-  }, [userAvatar]);
+  const { user } = useContext(UserContext);
+  const refSignOutBtn = useOutsideClick(() => setSignOutBtnOpen(false));
 
   return (
     <div className='bars'>
@@ -77,7 +72,7 @@ export default function Navbar() {
           {user && (
             <img
               className='navbar__userAvatar__button__image'
-              src={userAvatar}
+              src={user.photoURL}
               // Adding referrerPolicy to prevent stric origine
               // error forbiden 403
               referrerPolicy='no-referrer'
@@ -100,7 +95,7 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-        {signOutBtnOpen && <SingOutButton />}
+        {signOutBtnOpen && <SingOutButton innerRef={refSignOutBtn} />}
       </div>
     </div>
   );

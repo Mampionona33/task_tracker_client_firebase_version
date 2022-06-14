@@ -4,7 +4,7 @@ import { auth } from '../Firebase/firebase';
 import '../styles/variables.scss';
 import '../styles/SingOutButton.scss';
 
-export default function SingOutButton() {
+export default function SingOutButton({ innerRef }) {
   const handleClickSingout = (event) => {
     event.preventDefault();
     signOut(auth)
@@ -21,6 +21,7 @@ export default function SingOutButton() {
 
   return (
     <button
+      ref={innerRef}
       type='button'
       className='signOut__button'
       onClick={handleClickSingout}
