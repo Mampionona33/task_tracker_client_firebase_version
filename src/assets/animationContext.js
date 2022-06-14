@@ -5,6 +5,7 @@ export const AnimationContext = createContext({});
 const AnimationProvider = ({ children }) => {
   const [toggleSideBar, setToggleSideBar] = useState(false);
   const [signOutBtnOpen, setSignOutBtnOpen] = useState(false);
+
   return (
     <AnimationContext.Provider
       value={{

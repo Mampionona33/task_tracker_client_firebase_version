@@ -7,7 +7,7 @@ import useOutsideClick from './../assets/useOutsideClick';
 
 export default function SideBar() {
   const context = useContext(AnimationContext);
-  const { toggleSideBar, setToggleSideBar } = context;
+  const { setToggleSideBar } = context;
   const refSidebar = useOutsideClick(() => setToggleSideBar(false));
   return (
     <>

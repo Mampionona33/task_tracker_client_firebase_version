@@ -20,7 +20,7 @@ export default function Navbar() {
     context;
   const location = useLocation();
   const { user } = useContext(UserContext);
-  const refSignOutBtn = useOutsideClick(() => setSignOutBtnOpen(false));
+  const refSignOutButton = useOutsideClick(() => setSignOutBtnOpen(false));
 
   return (
     <div className='bars'>
@@ -64,23 +64,25 @@ export default function Navbar() {
           {location.pathname.slice(1).charAt(0).toUpperCase() +
             location.pathname.slice(2)}
         </motion.h1>
-        <button
-          className='navbar__userAvatar__button'
-          type='button'
-          onClick={() => setSignOutBtnOpen(!signOutBtnOpen)}
-          ref={refSignOutBtn}
-        >
-          {user && (
-            <img
-              className='navbar__userAvatar__button__image'
-              src={user.photoURL}
-              // Adding referrerPolicy to prevent stric origine
-              // error forbiden 403
-              referrerPolicy='no-referrer'
-              alt={user.displayName.slice(0, user.displayName.indexOf(' '))}
-            />
-          )}
-        </button>
+        <div className='signOut__container' ref={refSignOutButton}>
+          <button
+            className='navbar__userAvatar__button'
+            type='button'
+            onClick={() => setSignOutBtnOpen(!signOutBtnOpen)}
+          >
+            {user && (
+              <img
+                className='navbar__userAvatar__button__image'
+                src={user.photoURL}
+                // Adding referrerPolicy to prevent stric origine
+                // error forbiden 403
+                referrerPolicy='no-referrer'
+                alt={user.displayName.slice(0, user.displayName.indexOf(' '))}
+              />
+            )}
+          </button>
+          {signOutBtnOpen && <SingOutButton />}
+        </div>
       </div>
       <div className='navbar__container'>
         <AnimatePresence exitBeforeEnter>
@@ -96,7 +98,6 @@ export default function Navbar() {
             </motion.div>
           )}
         </AnimatePresence>
-        {signOutBtnOpen && <SingOutButton />}
       </div>
     </div>
   );
