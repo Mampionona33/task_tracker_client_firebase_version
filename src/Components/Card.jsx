@@ -1,13 +1,14 @@
 import React from 'react';
 import '../styles/Card.scss';
 
-export default function Card() {
+export default function Card({ title, children }) {
   return (
     <div className='card'>
-      <div className='triangle__sup'></div>
-      <h1>title</h1>
-      <div className='element'>element</div>
-      <div className='triangle__inf'></div>
+      <div className='card__sup'></div>
+      <h1 className='card__title'>{title}</h1>
+      <hr />
+      <div className='element'>{children}</div>
+      <div className='card__inf'></div>
     </div>
   );
 }

@@ -2,7 +2,26 @@
 
 .card {
   position: absolute;
+  top: 30vh;
   background-color: $whiteColor;
-  margin-top: calc(50vh - 6vh);
+  border-radius: 0 1rem 0 1rem;
   z-index: 2;
+
+  &__sup {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 5rem solid transparent;
+    border-left: 5rem solid green;
+  }
+  &__inf {
+    height: 0;
+    border-top: 5rem solid transparent;
+    border-right: 5rem solid green;
+  }
+
+  &__title {
+    display: flex;
+    justify-content: center;
+  }
 }

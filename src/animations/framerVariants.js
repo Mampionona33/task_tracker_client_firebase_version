@@ -77,11 +77,27 @@ export const navbarTitleVariants = {
 export const newTaskFormContainerVariants = {
   hidden: {
     opacity: 0,
+    scale: 0,
+    x: '-100vw',
+    y: '-100vh',
   },
   animate: {
     opacity: 1,
+    scale: 1,
+    x: 0,
+    y: 0,
     transition: {
-      type: 'spring',
+      type: 'tween',
+      ease: 'easeInOut',
     },
+  },
+};
+
+export const cardSupVariants = {
+  hidden: {
+    scale: 0,
+  },
+  animate: {
+    scale: 1,
   },
 };
