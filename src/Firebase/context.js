@@ -21,6 +21,10 @@ export const AuthContextProvider = ({ children }) => {
       try {
         setUser(result);
         localStorage.setItem('taskTrackerUserisLoggeIn', 'true');
+        localStorage.setItem(
+          'taskTrackerUserisLoggeInPhotoUrl',
+          result.photoURL
+        );
       } catch (error) {
         setErroR.log(error.message);
       }

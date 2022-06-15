@@ -24,7 +24,7 @@ export default function SideBar() {
             className='sidebar__list__item'
             onClick={(event) => handleClickListItem(event, '/dashboard')}
           >
-            <span class='material-icons-round sidebar__list__item__icon'>
+            <span className='material-icons-round sidebar__list__item__icon'>
               dashboard
             </span>
             Dashboard
@@ -33,7 +33,7 @@ export default function SideBar() {
             className='sidebar__list__item'
             onClick={(event) => handleClickListItem(event, '/history')}
           >
-            <span class='material-icons-round sidebar__list__item__icon'>
+            <span className='material-icons-round sidebar__list__item__icon'>
               work_history
             </span>
             History

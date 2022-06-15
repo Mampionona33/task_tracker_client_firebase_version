@@ -5,6 +5,7 @@ export const AnimationContext = createContext({});
 const AnimationProvider = ({ children }) => {
   const [toggleSideBar, setToggleSideBar] = useState(false);
   const [signOutBtnOpen, setSignOutBtnOpen] = useState(false);
+  const [newTaskForm, setNewTaskForm] = useState(false);
 
   return (
     <AnimationContext.Provider
@@ -13,6 +14,8 @@ const AnimationProvider = ({ children }) => {
         setToggleSideBar,
         signOutBtnOpen,
         setSignOutBtnOpen,
+        newTaskForm,
+        setNewTaskForm,
       }}
     >
       {children}

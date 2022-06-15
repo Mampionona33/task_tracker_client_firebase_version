@@ -16,11 +16,17 @@ import SingOutButton from './SingOutButton';
 
 export default function Navbar() {
   const context = useContext(AnimationContext);
-  const { toggleSideBar, setToggleSideBar, setSignOutBtnOpen, signOutBtnOpen } =
-    context;
+  const {
+    toggleSideBar,
+    setToggleSideBar,
+    setSignOutBtnOpen,
+    signOutBtnOpen,
+    setNewTaskForm,
+  } = context;
   const location = useLocation();
   const { user } = useContext(UserContext);
   const refSignOutButton = useOutsideClick(() => setSignOutBtnOpen(false));
+  const userAvatar = localStorage.getItem('taskTrackerUserisLoggeInPhotoUrl');
 
   return (
     <div className='bars'>
@@ -69,6 +75,7 @@ export default function Navbar() {
           <button
             type='button'
             className='navbar__rightButtonContainer__newTask'
+            onClick={() => setNewTaskForm(true)}
           >
             <span className='material-icons-round navbar__rightButtonContainer__newTask__icon'>
               add_task
@@ -85,16 +92,13 @@ export default function Navbar() {
               type='button'
               onClick={() => setSignOutBtnOpen(!signOutBtnOpen)}
             >
-              {user && (
-                <img
-                  className='navbar__userAvatar__button__image'
-                  src={user.photoURL}
-                  // Adding referrerPolicy to prevent stric origine
-                  // error forbiden 403
-                  referrerPolicy='no-referrer'
-                  alt={user.displayName.slice(0, user.displayName.indexOf(' '))}
-                />
-              )}
+              <img
+                className='navbar__userAvatar__button__image'
+                src={userAvatar}
+                // Adding referrerPolicy to prevent stric origine
+                // error forbiden 403
+                referrerPolicy='no-referrer'
+              />
             </button>
             {signOutBtnOpen && <SingOutButton />}
           </div>
