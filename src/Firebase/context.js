@@ -19,12 +19,14 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (result) => {
       try {
-        setUser(result);
-        localStorage.setItem('taskTrackerUserisLoggeIn', 'true');
-        localStorage.setItem(
-          'taskTrackerUserisLoggeInPhotoUrl',
-          result.photoURL
-        );
+        if (result) {
+          setUser(result);
+          localStorage.setItem('taskTrackerUserisLoggeIn', 'true');
+          localStorage.setItem(
+            'taskTrackerUserisLoggeInPhotoUrl',
+            result.photoURL
+          );
+        }
       } catch (error) {
         setErroR.log(error.message);
       }

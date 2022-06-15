@@ -5,11 +5,13 @@ import '../styles/variables.scss';
 import '../styles/SingOutButton.scss';
 
 export default function SingOutButton() {
-  const handleClickSingout = (event) => {
+  const handleClickSingout = async (event) => {
     event.preventDefault();
     signOut(auth)
       .then(() => {
         localStorage.removeItem('taskTrackerUserisLoggeIn');
+        localStorage.removeItem('taskTrackerUserisLoggeInPhotoUrl');
+        console.log('id remove');
       })
       .then(() => {
         window.location.reload();
@@ -23,7 +25,7 @@ export default function SingOutButton() {
     <button
       type='button'
       className='signOut__button'
-      onClick={handleClickSingout}
+      onClick={(ev) => handleClickSingout(ev)}
     >
       Signout
     </button>
