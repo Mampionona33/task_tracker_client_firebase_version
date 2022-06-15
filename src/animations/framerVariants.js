@@ -91,6 +91,17 @@ export const newTaskFormContainerVariants = {
       ease: 'easeInOut',
     },
   },
+  exit: {
+    opacity: 0,
+    scale: 0,
+    x: '200%',
+    y: '6vh',
+    transition: {
+      type: 'tween',
+      duration: '0.3',
+      ease: 'backInOut',
+    },
+  },
 };
 
 export const cardSupVariants = {

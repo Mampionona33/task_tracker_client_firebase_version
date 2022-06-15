@@ -8,7 +8,7 @@ import { newTaskFormContainerVariants } from '../animations/framerVariants';
 
 export default function ProtectedRoute({ children, isUserLogged }) {
   const context = useContext(AnimationContext);
-  const { newTaskForm } = context;
+  const { newTaskFormContainer } = context;
 
   if (!isUserLogged) {
     return <Navigate to={'/login'} replace={true} />;
@@ -16,17 +16,20 @@ export default function ProtectedRoute({ children, isUserLogged }) {
   return (
     <>
       <Navbar />
-      {newTaskForm && (
-        <motion.div
-          key={'newTaskFormContainer'}
-          className='newTaskFormContainer'
-          variants={newTaskFormContainerVariants}
-          initial='hidden'
-          animate='animate'
-        >
-          <NewTaskFormContainer />
-        </motion.div>
-      )}
+      <AnimatePresence exitBeforeEnter>
+        {newTaskFormContainer && (
+          <motion.div
+            key={'newTaskFormContainer'}
+            className='newTaskFormContainer'
+            variants={newTaskFormContainerVariants}
+            initial='hidden'
+            animate='animate'
+            exit='exit'
+          >
+            <NewTaskFormContainer />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {children ? children : <Outlet />}
     </>

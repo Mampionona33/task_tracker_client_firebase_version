@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { AnimationContext } from '../assets/animationContext';
 import useOutsideClick from '../assets/useOutsideClick';
@@ -21,7 +21,8 @@ export default function Navbar() {
     setToggleSideBar,
     setSignOutBtnOpen,
     signOutBtnOpen,
-    setNewTaskForm,
+    setNewTaskFormContainer,
+    newTaskFormContainer,
   } = context;
   const location = useLocation();
   const { user } = useContext(UserContext);
@@ -75,7 +76,7 @@ export default function Navbar() {
           <button
             type='button'
             className='navbar__rightButtonContainer__newTask'
-            onClick={() => setNewTaskForm(true)}
+            onClick={() => setNewTaskFormContainer(!newTaskFormContainer)}
           >
             <span className='material-icons-round navbar__rightButtonContainer__newTask__icon'>
               add_task
