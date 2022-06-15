@@ -1,8 +1,13 @@
 import React from 'react';
+import BackgroundModal from './BackgroundModal';
+import Card from './Card';
+import '../styles/NewTaskForm.scss';
+
 export default function NewTaskForm() {
   return (
-    <>
-      <h1>New task Form place holder</h1>
-    </>
+    <div className='newTaskForm'>
+      <Card />
+      <BackgroundModal topPosition={'6vh'} />
+    </div>
   );
 }

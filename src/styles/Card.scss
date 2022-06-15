@@ -1,0 +1,8 @@
+@import './variables.scss';
+
+.card {
+  position: absolute;
+  background-color: $whiteColor;
+  margin-top: calc(50vh - 6vh);
+  z-index: 2;
+}
