@@ -14,6 +14,7 @@ import ProtectedRoute from './Page/ProtectedRoute';
 import './styles/App.scss';
 import { AnimatePresence } from 'framer-motion';
 import { AnimationContext } from './assets/animationContext';
+import Admin from './Page/Admin';
 
 export default function App() {
   const location = useLocation();
@@ -39,6 +40,7 @@ export default function App() {
           <Route
             element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
           >
+            <Route path='admin' element= {<Admin/>}/>
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/history' element={<History />} />
           </Route>
