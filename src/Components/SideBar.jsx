@@ -38,6 +38,15 @@ export default function SideBar() {
             </span>
             History
           </li>
+          <li
+            className='sidebar__list__item'
+            onClick={(event) => handleClickListItem(event, '/admin')}
+          >
+            <span className='material-icons-round sidebar__list__item__icon'>
+              work_history
+            </span>
+            Admin
+          </li>
         </ul>
       </div>
       <BackgroundModal />
