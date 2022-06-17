@@ -15,14 +15,8 @@ import './styles/App.scss';
 import { AnimatePresence } from 'framer-motion';
 import { AnimationContext } from './assets/animationContext';
 import Admin from './Page/Admin';
-import {
-  ApolloClient,
-  ApolloProvider,
-  gql,
-  InMemoryCache,
-  useMutation,
-  useQuery,
-} from '@apollo/client';
+import { gql, useMutation, useQuery } from '@apollo/client';
+import { async } from '@firebase/util';
 
 const GET_USER = gql`
   query SearchUsers($input: FilterUser) {
@@ -30,6 +24,7 @@ const GET_USER = gql`
       name
       uid
       email
+      picture
     }
   }
 `;
@@ -47,7 +42,21 @@ const CREAT_USER = gql`
 
 export default function App() {
   const location = useLocation();
-  const { user, userUid, authUser } = useContext(UserContext);
+  /* 
+    after login with google get credential in from context.js
+    then check if the user from context is present in the database.
+    If it is not present then create it
+  */
+  const {
+    user,
+    userUid,
+    authUser,
+    authName,
+    authEmail,
+    authPicture,
+    setUserFromMongo,
+    userFromMongo,
+  } = useContext(UserContext);
   const { setToggleSideBar } = useContext(AnimationContext);
   const isUserLogged = localStorage.getItem('taskTrackerUserisLoggeIn');
 
@@ -71,21 +80,39 @@ export default function App() {
   useEffect(() => {
     if (data && authUser) {
       const userData = data.searchUsers;
+
       if (userData.length === 0) {
         creatNewUser({
           variables: {
             input: {
               uid: userUid,
-              name: authUser.auth.currentUser.displayName,
-              email: authUser.auth.currentUser.email,
-              picture: authUser.auth.currentUser.photoURL,
+              name: authName,
+              email: authEmail,
+              picture: authPicture,
             },
           },
         });
       }
+
+      if (userData.length > 0) {
+        const setUser = setUserFromMongo(userData);
+        return () => {
+          setUser;
+        };
+      }
+
+      if (error) {
+        console.log(error);
+      }
     }
   }, [data, authUser]);
-  
+
+  useEffect(() => {
+    if (data && data.searchUsers && data.searchUsers.length > 0) {
+    }
+  }, [data]);
+
+  console.log(userFromMongo);
 
   return (
     <StrictMode>
@@ -96,14 +123,20 @@ export default function App() {
         <Routes location={location} key={location.key}>
           <Route
             index
-            element={!isUserLogged ? <Login /> : <Navigate to={'/dashboard'} />}
+            element={
+              !userFromMongo ? <Login /> : <Navigate to={'/dashboard'} />
+            }
           />
           <Route
             path='login'
-            element={!isUserLogged ? <Login /> : <Navigate to={'/dashboard'} />}
+            element={
+              !userFromMongo ? <Login /> : <Navigate to={'/dashboard'} />
+            }
           />
           <Route
-            element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
+            element={
+              <ProtectedRoute user={user} isUserLogged={userFromMongo} />
+            }
           >
             <Route path='admin' element={<Admin />} />
             <Route path='/dashboard' element={<Dashboard />} />
