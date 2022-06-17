@@ -38,7 +38,7 @@ export const AuthContextProvider = ({ children }) => {
           setAuthName(result.displayName);
           setAuthPicture(result.photoURL);
           setAuthUser(result);
-          // localStorage.setItem('taskTrackerUserisLoggeIn', 'true');
+          localStorage.setItem('taskTrackerUserisLoggeIn', 'true');
           localStorage.setItem(
             'taskTrackerUserisLoggeInPhotoUrl',
             result.photoURL

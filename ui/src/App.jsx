@@ -123,20 +123,14 @@ export default function App() {
         <Routes location={location} key={location.key}>
           <Route
             index
-            element={
-              !userFromMongo ? <Login /> : <Navigate to={'/dashboard'} />
-            }
+            element={!isUserLogged ? <Login /> : <Navigate to={'/dashboard'} />}
           />
           <Route
             path='login'
-            element={
-              !userFromMongo ? <Login /> : <Navigate to={'/dashboard'} />
-            }
+            element={!isUserLogged ? <Login /> : <Navigate to={'/dashboard'} />}
           />
           <Route
-            element={
-              <ProtectedRoute user={user} isUserLogged={userFromMongo} />
-            }
+            element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
           >
             <Route path='admin' element={<Admin />} />
             <Route path='/dashboard' element={<Dashboard />} />
