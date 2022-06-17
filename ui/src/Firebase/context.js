@@ -27,7 +27,9 @@ export const AuthContextProvider = ({ children }) => {
   const [erroR, setErroR] = useState(null);
   const [userUid, setUserUid] = useState(null);
 
-  const [userFromMongo, setUserFromMongo] = useState(null);
+  const [userFromMongo, setUserFromMongo] = useState(
+    auth.currentUser ? auth.currentUser : null
+  );
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (result) => {

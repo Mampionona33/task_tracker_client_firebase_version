@@ -123,14 +123,14 @@ export default function App() {
         <Routes location={location} key={location.key}>
           <Route
             index
-            element={!isUserLogged ? <Login /> : <Navigate to={'/dashboard'} />}
+            element={!authUser ? <Login /> : <Navigate to={'/dashboard'} />}
           />
           <Route
             path='login'
-            element={!isUserLogged ? <Login /> : <Navigate to={'/dashboard'} />}
+            element={!authUser ? <Login /> : <Navigate to={'/dashboard'} />}
           />
           <Route
-            element={<ProtectedRoute user={user} isUserLogged={isUserLogged} />}
+            element={<ProtectedRoute user={user} isUserLogged={authUser} />}
           >
             <Route path='admin' element={<Admin />} />
             <Route path='/dashboard' element={<Dashboard />} />
