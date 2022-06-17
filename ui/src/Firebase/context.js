@@ -3,6 +3,13 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { useEffect, useState } from 'react';
 import { createContext } from 'react';
 import { auth } from './firebase';
+import {
+  ApolloClient,
+  ApolloProvider,
+  gql,
+  InMemoryCache,
+  useQuery,
+} from '@apollo/client';
 
 /* 
   this file containts all of context "state"
@@ -13,14 +20,18 @@ import { auth } from './firebase';
 export const UserContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [authUser, setAuthUser] = useState(null);
   const [erroR, setErroR] = useState(null);
+  const [userUid, setUserUid] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (result) => {
       try {
         if (result) {
-          setUser(result);
+          // console.log(result.uid);
+          setUserUid(result.uid);
+          console.log(result.uid);
+          setAuthUser(result);
           localStorage.setItem('taskTrackerUserisLoggeIn', 'true');
           localStorage.setItem(
             'taskTrackerUserisLoggeInPhotoUrl',
@@ -28,7 +39,7 @@ export const AuthContextProvider = ({ children }) => {
           );
         }
       } catch (error) {
-        setErroR.log(error.message);
+        setErroR(error.message);
       }
     });
     return () => {
@@ -37,7 +48,7 @@ export const AuthContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, erroR }}>
+    <UserContext.Provider value={{ authUser, erroR, userUid }}>
       {children}
     </UserContext.Provider>
   );

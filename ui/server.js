@@ -22,7 +22,9 @@ if (enableHMR && process.env.NODE_ENV !== 'production') {
   app.use(devMiddlware(compiler));
   app.use(hotMiddlware(compiler));
 }
-const UI_API_ENDPOINT = process.env.UI_API_ENDPOINT;
+
+const UI_API_ENDPOINT =
+  process.env.UI_API_ENDPOINT || 'http://localhost:3000/graphql';
 const env = { UI_API_ENDPOINT };
 
 app.get('/env.js', (req, res) => {

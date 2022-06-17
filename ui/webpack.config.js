@@ -1,4 +1,10 @@
 path = require('path');
+
+/*
+  use dotenv-webpack to have an access to the process.env in es6
+  after creating the const Dotenv use it inside plugin in this current file.
+  then we can use directly process.env in every files without importing dotenv
+ */
 const Dotenv = require('dotenv-webpack');
 
 module.exports = {
